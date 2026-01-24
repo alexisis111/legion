@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/netlify.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="netlify" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,11 +64,32 @@
       <updated>1769112525504</updated>
       <workItem from="1769112532429" duration="6398000" />
       <workItem from="1769246423262" duration="15669000" />
-      <workItem from="1769272094565" duration="12210000" />
+      <workItem from="1769272094565" duration="12571000" />
     </task>
+    <task id="LOCAL-00001" summary="netlify">
+      <option name="closed" value="true" />
+      <created>1769284649626</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1769284649626</updated>
+    </task>
+    <task id="LOCAL-00002" summary="netlify">
+      <option name="closed" value="true" />
+      <created>1769284775677</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1769284775677</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="netlify" />
+    <option name="LAST_COMMIT_MESSAGE" value="netlify" />
   </component>
 </project>
