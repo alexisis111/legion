@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="netlify">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="netlify" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,7 +64,7 @@
       <updated>1769112525504</updated>
       <workItem from="1769112532429" duration="6398000" />
       <workItem from="1769246423262" duration="15669000" />
-      <workItem from="1769272094565" duration="13624000" />
+      <workItem from="1769272094565" duration="14023000" />
     </task>
     <task id="LOCAL-00001" summary="netlify">
       <option name="closed" value="true" />
@@ -108,7 +106,23 @@
       <option name="project" value="LOCAL" />
       <updated>1769286058520</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="netlify">
+      <option name="closed" value="true" />
+      <created>1769286149545</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1769286149545</updated>
+    </task>
+    <task id="LOCAL-00007" summary="netlify">
+      <option name="closed" value="true" />
+      <created>1769286296187</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1769286296187</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
