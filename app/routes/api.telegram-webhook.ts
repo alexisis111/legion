@@ -15,7 +15,13 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     }
 
     // Forward the request to the Netlify function
-    const netlifyResponse = await fetch(`${process.env.NETLIFY_SITE_URL || ''}/.netlify/functions/telegram-webhook`, {
+    // In production, this will call the deployed Netlify function
+    // In development, you might need to run the function locally or mock it
+    const webhookUrl = process.env.NODE_ENV === 'production'
+      ? `${process.env.DEPLOY_URL || process.env.URL || ''}/.netlify/functions/telegram-webhook`
+      : 'http://localhost:8888/.netlify/functions/telegram-webhook'; // Default for local development
+
+    const netlifyResponse = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
