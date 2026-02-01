@@ -14,14 +14,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       return json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Forward the request to the Netlify function
-    // In production, this will call the deployed Netlify function
-    // In development, you might need to run the function locally or mock it
-    const webhookUrl = process.env.NODE_ENV === 'production'
-      ? `${process.env.DEPLOY_URL || process.env.URL || ''}/.netlify/functions/telegram-webhook`
-      : 'http://localhost:8888/.netlify/functions/telegram-webhook'; // Default for local development
+    // In a React Router + Netlify deployment, we need to call the Netlify function directly
+    // The Netlify function should be accessible at the root of your domain when deployed
+    const netlifyFunctionUrl = '/.netlify/functions/telegram-webhook';
 
-    const netlifyResponse = await fetch(webhookUrl, {
+    const netlifyResponse = await fetch(netlifyFunctionUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,13 +26,22 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       body: JSON.stringify(formData),
     });
 
-    const netlifyResult = await netlifyResponse.json();
+    // Important: Clone the response before reading it as JSON
+    const responseBody = await netlifyResponse.text();
 
-    if (!netlifyResponse.ok) {
-      return json({ error: 'Failed to send message to Telegram' }, { status: 500 });
+    let netlifyResult;
+    try {
+      netlifyResult = JSON.parse(responseBody);
+    } catch (e) {
+      console.error('Error parsing Netlify function response:', responseBody);
+      return json({ error: 'Invalid response from webhook service' }, { status: 502 });
     }
 
-    return json({ success: true, message: 'Message sent to Telegram successfully' });
+    if (!netlifyResponse.ok) {
+      return json({ error: netlifyResult.error || 'Failed to send message to Telegram' }, { status: netlifyResponse.status });
+    }
+
+    return json({ success: true, message: netlifyResult.message || 'Message sent to Telegram successfully' });
   } catch (error) {
     console.error('Error processing webhook:', error);
     return json({ error: 'Internal server error' }, { status: 500 });
