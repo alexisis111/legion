@@ -128,15 +128,17 @@ const Contacts: React.FC = () => {
   );
 };
 
+import { useFetcher } from 'react-router';
+
 // Form Component
 const FormComponent: React.FC<{ theme: string }> = ({ theme }) => {
+  const fetcher = useFetcher();
   const [formData, setFormData] = React.useState({
     name: '',
     email: '',
     phone: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -147,7 +149,7 @@ const FormComponent: React.FC<{ theme: string }> = ({ theme }) => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // Check if consent checkbox is checked
@@ -160,25 +162,21 @@ const FormComponent: React.FC<{ theme: string }> = ({ theme }) => {
       return;
     }
 
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+    // Submit form using fetcher
+    fetcher.submit(formData, { method: 'post', action: '/api/telegram-webhook' });
+  };
 
-    try {
-      const response = await fetch('/api/telegram-webhook', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (response.ok && result.success) {
+  // Handle submission status based on fetcher state
+  React.useEffect(() => {
+    if (fetcher.state === 'submitting') {
+      setSubmitStatus(null); // Clear previous status when submitting
+    } else if (fetcher.state === 'idle' && fetcher.data) {
+      if (fetcher.data.success) {
         setSubmitStatus({
           type: 'success',
-          message: 'Сообщение успешно отправлено!'
+          message: fetcher.data.message || 'Сообщение успешно отправлено!'
         });
+
         // Reset form
         setFormData({
           name: '',
@@ -186,19 +184,19 @@ const FormComponent: React.FC<{ theme: string }> = ({ theme }) => {
           phone: '',
           message: ''
         });
-        consentCheckbox.checked = false;
+
+        const consentCheckbox = document.getElementById('consent') as HTMLInputElement;
+        if (consentCheckbox) {
+          consentCheckbox.checked = false;
+        }
       } else {
-        throw new Error(result.error || 'Ошибка при отправке сообщения');
+        setSubmitStatus({
+          type: 'error',
+          message: fetcher.data.error || 'Ошибка при отправке сообщения'
+        });
       }
-    } catch (error) {
-      setSubmitStatus({
-        type: 'error',
-        message: error instanceof Error ? error.message : 'Ошибка при отправке сообщения'
-      });
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  }, [fetcher.state, fetcher.data]);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -303,9 +301,9 @@ const FormComponent: React.FC<{ theme: string }> = ({ theme }) => {
 
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={fetcher.state !== 'idle'}
         className={`w-full py-3 px-4 rounded-lg font-bold text-lg transition-all ${
-          isSubmitting
+          fetcher.state !== 'idle'
             ? 'opacity-70 cursor-not-allowed'
             : 'hover:opacity-90'
         } ${
@@ -314,7 +312,7 @@ const FormComponent: React.FC<{ theme: string }> = ({ theme }) => {
             : 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white'
         }`}
       >
-        {isSubmitting ? 'Отправка...' : 'Отправить сообщение'}
+        {fetcher.state !== 'idle' ? 'Отправка...' : 'Отправить сообщение'}
       </button>
     </form>
   );
