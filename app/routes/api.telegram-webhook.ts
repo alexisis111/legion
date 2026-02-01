@@ -15,12 +15,19 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       return json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // In a React Router + Netlify deployment, we need to call the Netlify function directly
-    // The Netlify function should be accessible at the root of your domain when deployed
-    // Using the origin from the request to construct the full URL
-    const netlifyFunctionUrl = `${new URL(request.url).origin}/.netlify/functions/telegram-webhook`;
+    // Format the message for Telegram (same as in the Netlify function)
+    let telegramMessage = `📩 Новое сообщение с сайта:\n\nИмя: ${formData.name}\nEmail: ${formData.email}`;
 
-    // Ensure we're sending all form data including optional fields like phone
+    // Add phone number if provided
+    if (formData.phone) {
+      telegramMessage += `\nТелефон: ${formData.phone}`;
+    }
+
+    telegramMessage += `\nСообщение: ${formData.message}\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
+
+    // Call the Netlify function that handles the Telegram API call
+    const netlifyFunctionUrl = '/.netlify/functions/telegram-webhook';
+
     const netlifyResponse = await fetch(netlifyFunctionUrl, {
       method: 'POST',
       headers: {
@@ -29,18 +36,10 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       body: JSON.stringify(formData),
     });
 
-    // Important: Clone the response before reading it as JSON
-    const responseBody = await netlifyResponse.text();
-
-    let netlifyResult;
-    try {
-      netlifyResult = JSON.parse(responseBody);
-    } catch (e) {
-      console.error('Error parsing Netlify function response:', responseBody);
-      return json({ error: 'Invalid response from webhook service' }, { status: 502 });
-    }
+    const netlifyResult = await netlifyResponse.json();
 
     if (!netlifyResponse.ok) {
+      console.error('Netlify function error:', netlifyResult);
       return json({ error: netlifyResult.error || 'Failed to send message to Telegram' }, { status: netlifyResponse.status });
     }
 
