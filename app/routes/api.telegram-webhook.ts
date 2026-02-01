@@ -15,16 +15,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       return json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Format the message for Telegram (same as in the Netlify function)
-    let telegramMessage = `📩 Новое сообщение с сайта:\n\nИмя: ${formData.name}\nEmail: ${formData.email}`;
-
-    // Add phone number if provided
-    if (formData.phone) {
-      telegramMessage += `\nТелефон: ${formData.phone}`;
-    }
-
-    telegramMessage += `\nСообщение: ${formData.message}\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
-
     // Call the Netlify function that handles the Telegram API call
     const netlifyFunctionUrl = '/.netlify/functions/telegram-webhook';
 
