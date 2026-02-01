@@ -164,7 +164,7 @@ const FormComponent: React.FC<{ theme: string }> = ({ theme }) => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('/.netlify/functions/telegram-webhook', {
+      const response = await fetch('/api/telegram-webhook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
