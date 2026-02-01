@@ -2,7 +2,8 @@ import type {Route} from "../routes/+types/drone-defense";
 import {useTheme} from "../contexts/ThemeContext";
 import InfographicCard from "./InfographicCard";
 import DroneImageSection from "./DroneImageSection";
-import React from "react";
+import ZOKVisualization from "./ZOKVisualization"; // Assuming this component exists
+import React, {useState} from "react";
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -12,588 +13,438 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function DroneDefense() {
-    const {theme} = useTheme();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isFullscreenModalOpen, setIsFullscreenModalOpen] = useState(false);
 
-    // Пока тема не определена, можно показать заглушку или ничего не отображать
-    if (typeof window !== 'undefined' && !localStorage.getItem('theme')) {
-        // Если тема еще не сохранена в localStorage, значит компонент загружается впервые
-        // и мы можем показать пустой div, чтобы избежать мерцания
-        return <div className="min-h-screen bg-gray-50 dark:bg-gray-900" />;
-    }
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const closeFullscreenModal = () => {
+        setIsFullscreenModalOpen(false);
+    };
+
+    const services = [
+        {
+            title: "Портовые сооружения, морские вокзалы",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                </svg>
+            )
+        },
+        {
+            title: "Объекты газового хозяйства",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4 4 0 003 15z" />
+                </svg>
+            )
+        },
+        {
+            title: "Транспортная и железнодорожная инфраструктура",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+            )
+        },
+        {
+            title: "Объекты аэропортов",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+            )
+        },
+        {
+            title: "ТЭЦ, электроподстанции, объекты электроснабжения",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            )
+        },
+        {
+            title: "Резервуарные парки хранения нефти и нефтепродуктов",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+            )
+        },
+        {
+            title: "Производства и склады хранения легковоспламеняющихся и взрывчатых веществ",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+            )
+        },
+        {
+            title: "Производства и склады хранения химической промышленности",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.87-2.154-1.413-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+            )
+        },
+        {
+            title: "Центры обработки информации",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+            )
+        },
+        {
+            title: "Объекты связи",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                </svg>
+            )
+        },
+        {
+            title: "Медицинские центры",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+            )
+        },
+        {
+            title: "Химические и биологические лаборатории",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.87-2.154-1.413-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+            )
+        }
+    ];
+
+    const features = [
+        {
+            title: "Физическая защита",
+            description: "Быстровозводимые защитные инженерные сооружения из стальных профилей с трехуровневой защитой из стальной сетки",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            )
+        },
+        {
+            title: "Отведение угрозы",
+            description: "Отведение точки взрыва на безопасное расстояние от инфраструктуры с сохранением работоспособности объекта",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            )
+        },
+        {
+            title: "Антикоррозийная защита",
+            description: "Все конструкции надежно защищены антикоррозийным покрытием с выполнением полного комплекса АКЗ",
+            icon: (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                </svg>
+            )
+        }
+    ];
+
+    const steps = [
+        {
+            title: "Выезд на объект",
+            description: "Выезд на объект защиты для осмотра и обследования объекта"
+        },
+        {
+            title: "Технические согласования",
+            description: "Проведение технических согласований с Заказчиком"
+        },
+        {
+            title: "Эскизный проект",
+            description: "Разработка эскизного проекта. Согласование с Заказчиком"
+        },
+        {
+            title: "Проектная документация",
+            description: "Разработка проектной документации"
+        },
+        {
+            title: "Изготовление конструкций",
+            description: "Изготовление конструкций"
+        },
+        {
+            title: "Мобилизация",
+            description: "Мобилизация на объект"
+        },
+        {
+            title: "Монтаж ЗОК",
+            description: "Монтаж ЗОК"
+        },
+        {
+            title: "Сдача и ввод в эксплуатацию",
+            description: "Сдача ЗОК представителям Заказчика. Ввод в эксплуатацию"
+        },
+        {
+            title: "Передача документации",
+            description: "Передача исполнительной документации Заказчику"
+        },
+        {
+            title: "Сопровождение",
+            description: "Сопровождение в эксплуатации ЗОК"
+        }
+    ];
 
     return (
-        <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
-            {/* Hero Section BPLA*/}
-            <section id="overview" className={`py-16 relative overflow-hidden ${
-                theme === 'dark'
-                    ? 'bg-gradient-to-r from-blue-900 to-indigo-900 text-white'
-                    : 'bg-gradient-to-r from-blue-700 to-indigo-800 text-white'
-            }`}>
-
-                <div className="container mx-auto px-4 text-center relative z-10">
-                    <h1 className="text-4xl font-bold mb-4">Защитная ограждающая конструкция от БПЛА</h1>
-                    <p className="text-xl mb-8">Эффективное решение для защиты территории от несанкционированного
-                        проникновения беспилотников</p>
-
-                </div>
-
-                <div className="container mx-auto px-4 text-center relative z-10">
-                    <div className={`rounded-2xl p-8 max-w-5xl mx-auto ${
-                        theme === 'dark'
-                            ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                            : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                    }`}>
-
-
-                        <p className={`mb-8 text-center ${
-                            theme === 'dark' ? 'text-white' : 'text-gray-900'
-                        }`}>Предотвращение проникновения БПЛА на охраняемую территорию с
-                            использованием пространственной каркасной системы.</p>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {/* Card 1  */}
-                            <div
-                                className={`rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                                    theme === 'dark'
-                                        ? 'bg-gradient-to-br from-blue-900 to-indigo-900 border border-blue-700'
-                                        : 'bg-gradient-to-br from-blue-50 to-indigo-100 border border-blue-200'
-                                }`}>
-                                <div className="flex flex-col items-center text-center">
-                                    <h3 className={`text-lg font-bold mb-2 ${
-                                        theme === 'dark' ? 'text-blue-300' : 'text-blue-800'
-                                    }`}>Тип конструкции</h3>
-                                    <p className={`font-semibold text-lg ${
-                                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                                    }`}>Пространственная каркасная система</p>
-                                </div>
-                            </div>
-                            {/* Card 2  */}
-                            <div
-                                className={`rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                                    theme === 'dark'
-                                        ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border border-indigo-700'
-                                        : 'bg-gradient-to-br from-indigo-50 to-purple-100 border border-indigo-200'
-                                }`}>
-                                <div className="flex flex-col items-center text-center">
-                                    <h3 className={`text-lg font-bold mb-2 ${
-                                        theme === 'dark' ? 'text-indigo-300' : 'text-indigo-800'
-                                    }`}>Высота конструкции</h3>
-                                    <p className={`font-semibold text-lg ${
-                                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                                    }`}>от 7100 мм</p>
-                                </div>
-                            </div>
-                            {/* Card 3  */}
-                            <div
-                                className={`rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                                    theme === 'dark'
-                                        ? 'bg-gradient-to-br from-purple-900 to-pink-900 border border-purple-700'
-                                        : 'bg-gradient-to-br from-purple-50 to-pink-100 border border-purple-200'
-                                }`}>
-                                <div className="flex flex-col items-center text-center">
-                                    <h3 className={`text-lg font-bold mb-2 ${
-                                        theme === 'dark' ? 'text-purple-300' : 'text-purple-800'
-                                    }`}>Общая длина</h3>
-                                    <p className={`font-semibold text-lg ${
-                                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                                    }`}>от 17600 мм</p>
-                                </div>
-                            </div>
-                            {/* Card 4  */}
-                            <div
-                                className={`rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                                    theme === 'dark'
-                                        ? 'bg-gradient-to-br from-pink-900 to-red-900 border border-pink-700'
-                                        : 'bg-gradient-to-br from-pink-50 to-red-100 border border-pink-200'
-                                }`}>
-                                <div className="flex flex-col items-center text-center">
-                                    <h3 className={`text-lg font-bold mb-2 ${
-                                        theme === 'dark' ? 'text-pink-300' : 'text-pink-800'
-                                    }`}>Количество секций</h3>
-                                    <p className={`font-semibold text-lg ${
-                                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                                    }`}>от 11 секций по 1600 мм</p>
-                                </div>
-                            </div>
-                        </div>
+        <>
+            <section id="about" className="py-16 md:py-24 bg-background text-foreground p-6">
+                <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                    <div className="md:w-1/2 mb-10 md:mb-0">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+                            Комплексные системы инженерной защиты от <span
+                            className="text-blue-600 dark:text-blue-700">БПЛА</span>
+                        </h1>
+                        <p className="text-lg mb-8 max-w-lg text-foreground">
+                            Защита промышленных объектов от атак беспилотных летательных аппаратов с массой до 400кг
+                            и
+                            скоростью до 200 км/ч
+                        </p>
+                        <button
+                            onClick={openModal}
+                            className="bg-blue-600 hover:bg-blue-700 text-white dark:text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                        >
+                            Заказать систему
+                        </button>
                     </div>
-                </div>
-            </section>
-
-            {/* Stats Section */}
-            <section className="py-16">
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <InfographicCard
-                            title="Скорость установки"
-                            value="1 день"
-                            description="Быстрая сборка без спецтехники"
-                            icon={
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                     viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                            }
-                        />
-                        <InfographicCard
-                            title="Высота ограждения"
-                            value="от 7.1 м"
-                            description="Эффективная защита от дронов"
-                            icon={
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+                    <div className="md:w-1/2 w-full">
+                        <div className="relative">
+                            <ZOKVisualization enableControls={false}/>
+                            <div
+                                className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white text-sm px-3 py-2 rounded-lg">
+                                Нажмите на иконку сверху, чтобы открыть 3D модель
+                            </div>
+                            <button
+                                onClick={() => setIsFullscreenModalOpen(true)}
+                                className="absolute top-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all"
+                                aria-label="Открыть в полноэкранном режиме"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                           d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5"/>
                                 </svg>
-                            }
-                        />
-                        <InfographicCard
-                            title="Прочность"
-                            value="от 17 т"
-                            description="Общая масса конструкции"
-                            icon={
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                     viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                                </svg>
-                            }
-                        />
-                        <InfographicCard
-                            title="Срок службы"
-                            value="25 лет"
-                            description="Гарантия при правильной эксплуатации"
-                            icon={
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                     viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                                </svg>
-                            }
-                        />
+                            </button>
+                        </div>
                     </div>
                 </div>
+
+                {/* Модальное окно */}
+                {isModalOpen && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                        <div className="bg-card rounded-xl p-6 max-w-md w-full shadow-xl">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-xl font-bold text-foreground">Заказать систему</h3>
+                                <button
+                                    onClick={closeModal}
+                                    className="text-foreground hover:text-muted-foreground"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                              d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div className="space-y-4">
+                                <a
+                                    href="tel:+78137840235"
+                                    className="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                                >
+                                    <div
+                                        className="bg-blue-100 dark:bg-blue-900/30 w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                        </svg>
+                                    </div>
+                                    <span className="font-medium text-foreground">Позвонить</span>
+                                </a>
+
+                                <a
+                                    href="mailto:l-legion@bk.ru"
+                                    className="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                                >
+                                    <div
+                                        className="bg-blue-100 dark:bg-blue-900/30 w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <span className="font-medium text-foreground">Отправить письмо</span>
+                                </a>
+
+                                <a
+                                    href="/contacts"
+                                    onClick={closeModal}
+                                    className="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                                >
+                                    <div
+                                        className="bg-blue-100 dark:bg-blue-900/30 w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                        </svg>
+                                    </div>
+                                    <span className="font-medium text-foreground">Заполнить форму</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Модальное окно для полноэкранного режима */}
+                {isFullscreenModalOpen && (
+                    <div className="fixed inset-0 bg-black z-50 flex flex-col">
+                        <div className="flex justify-end p-4">
+                            <button
+                                onClick={closeFullscreenModal}
+                                className="text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70"
+                                aria-label="Закрыть"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+                                     viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                          d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="flex-1 flex items-center justify-center p-4">
+                            <div className="w-full h-full max-w-6xl max-h-[80vh]">
+                                <ZOKVisualization enableControls={true}/>
+                            </div>
+                        </div>
+                        <div className="p-4 text-center text-white bg-black bg-opacity-50">
+                            Покрутите модель, чтобы рассмотреть со всех сторон
+                        </div>
+                    </div>
+                )}
             </section>
 
-            {/* Main Content */}
-            <main className="container mx-auto px-4 py-12">
-                {/* Construction Overview */}
-                <section className="mb-16">
-                    <h2 className={`text-3xl font-bold mb-8 text-center ${
-                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>Общее описание
-                        конструкции</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div
-                            className={`rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
-                                theme === 'dark'
-                                    ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                                    : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                            }`}>
-                            <h3 className={`text-xl font-semibold mb-4 ${
-                                theme === 'dark' ? 'text-blue-400' : 'text-blue-700'
-                            }`}>Стойки</h3>
-                            <p className={`mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}><span
-                                className={`font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Материал:</span> Квадратная труба 100x100x8 мм</p>
-                            <p className={`mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}><span
-                                className={`font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Длина:</span> 9400 мм</p>
-                            <p className={`mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}><span
-                                className={`font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Крепление:</span> Анкерные соединения к бетонному основанию</p>
-                        </div>
-                        <div
-                            className={`rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
-                                theme === 'dark'
-                                    ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                                    : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                            }`}>
-                            <h3 className={`text-xl font-semibold mb-4 ${
-                                theme === 'dark' ? 'text-blue-400' : 'text-blue-700'
-                            }`}>Связи</h3>
-                            <p className={`mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}><span
-                                className="font-medium">Материал:</span> Квадратная труба 80x80x6 мм</p>
-                            <p className={`mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}><span
-                                className="font-medium">Крепление:</span> Болтовые соединения (4 болта на узел)</p>
-                        </div>
-                        <div
-                            className={`rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
-                                theme === 'dark'
-                                    ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                                    : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                            }`}>
-                            <h3 className={`text-xl font-semibold mb-4 ${
-                                theme === 'dark' ? 'text-blue-400' : 'text-blue-700'
-                            }`}>Заполнение</h3>
-                            <p className={`mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}><span
-                                className="font-medium">Материал:</span> Арматурная сетка Ø5 мм, ячейка 50x50 мм</p>
-                            <p className={`mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}><span
-                                className="font-medium">Размеры:</span> 1600x1800 мм</p>
-                            <p className={`mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}><span
-                                className="font-medium">Крепление:</span> Специализированный крепёж к связям</p>
-                        </div>
-                    </div>
-                </section>
+            <section id="services" className="py-16 bg-background text-foreground p-6">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-center mb-4">Объекты, которые мы защищаем</h2>
+                    <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+                        Наши индивидуальные решения подходят для различных типов промышленных объектов
+                    </p>
 
-                {/* Assembly Information */}
-                <section id="specifications" className="mb-16">
-                    <h2 className={`text-3xl font-bold mb-8 text-center ${
-                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>Компоновка и
-                        сборка</h2>
-                    <div className={`rounded-2xl p-8 shadow-lg ${
-                        theme === 'dark' ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700' : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                    }`}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <h3 className={`text-xl font-semibold mb-4 ${
-                                    theme === 'dark' ? 'text-blue-400' : 'text-blue-700'
-                                }`}>Характеристики сборки</h3>
-                                <ul className="space-y-2">
-                                    <li className="flex items-start">
-                                        <span
-                                            className={`font-medium w-48 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Количество ярусов:</span>
-                                        <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>3</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span
-                                            className={`font-medium w-48 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Расстояние между ярусами:</span>
-                                        <span
-                                            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>2000 мм</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span
-                                            className={`font-medium w-48 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Тип сборки:</span>
-                                        <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>Сборно-разборная (болтовые соединения)</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span
-                                            className={`font-medium w-48 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Отступ от здания:</span>
-                                        <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>1000-1300 мм</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className={`text-xl font-semibold mb-4 ${
-                                    theme === 'dark' ? 'text-blue-400' : 'text-blue-700'
-                                }`}>Габаритные размеры</h3>
-                                <ul className="space-y-2">
-                                    <li className="flex items-start">
-                                        <span
-                                            className={`font-medium w-48 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Общая длина:</span>
-                                        <span
-                                            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>17600 мм</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span
-                                            className={`font-medium w-48 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Количество секций:</span>
-                                        <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>11</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span
-                                            className={`font-medium w-48 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Ширина секции:</span>
-                                        <span
-                                            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>1600 мм</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span
-                                            className={`font-medium w-48 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Высота конструкции:</span>
-                                        <span
-                                            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>7100 мм</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Materials and Mass */}
-                <section id="materials" className="mb-16">
-                    <h2 className={`text-3xl font-bold mb-8 text-center ${
-                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>Материалы и масса
-                        конструкции</h2>
-                    <div className={`rounded-2xl p-8 shadow-lg ${
-                        theme === 'dark' ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700' : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                    }`}>
-                        <p className={`text-center mb-6 italic ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Масса
-                            указана с учётом 10% надбавки на подрезку и подгонку</p>
-                        <div className="overflow-x-auto">
-                            <table className="min-w-full divide-y divide-gray-200">
-                                <thead className={`${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'}`}>
-                                <tr>
-                                    <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Наименование</th>
-                                    <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ/Марка</th>
-                                    <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Длина/Размер</th>
-                                    <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Масса,
-                                        кг
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody className={`divide-y ${
-                                    theme === 'dark' ? 'divide-gray-700 bg-gray-800' : 'divide-gray-200 bg-white'
-                                }`}>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Труба
-                                        100x100x8 мм
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ
-                                        8639-82, сталь С245
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>310
-                                        м
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>6900</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Труба
-                                        80x80x6 мм
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ
-                                        8639-82, сталь С245
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>570
-                                        м
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>7680</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Лист
-                                        8x1500x6000 мм
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>09Г2С,
-                                        ГОСТ 19281-14
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>-</td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>1500</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Лист
-                                        10x1500x6000 мм
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>09Г2С,
-                                        ГОСТ 19281-14
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>-</td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>1390</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Арматура
-                                        Ø5 мм
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>-</td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>9000
-                                        м
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>320</td>
-                                </tr>
-                                </tbody>
-                                <tfoot className={`${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'} font-bold`}>
-                                <tr>
-                                    <td colSpan={3}
-                                        className={`px-6 py-4 text-right ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ИТОГО
-                                        МАССА:
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>17790
-                                        кг
-                                    </td>
-                                </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Bill of Materials */}
-                <section id="drawings" className="mb-16">
-                    <h2 className={`text-3xl font-bold mb-8 text-center ${
-                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>Ведомость
-                        метизов</h2>
-                    <div className={`rounded-2xl p-8 shadow-lg ${
-                        theme === 'dark' ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700' : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                    }`}>
-                        <div className="overflow-x-auto">
-                            <table className="min-w-full divide-y divide-gray-200">
-                                <thead className={`${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'}`}>
-                                <tr>
-                                    <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Наименование</th>
-                                    <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ
-                                        / Характеристики
-                                    </th>
-                                    <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Кол-во</th>
-                                </tr>
-                                </thead>
-                                <tbody className={`divide-y ${
-                                    theme === 'dark' ? 'divide-gray-700 bg-gray-800' : 'divide-gray-200 bg-white'
-                                }`}>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Болт
-                                        М10×1,5×55
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ
-                                        7798-70
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>930</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Болт
-                                        М10×1,5×150
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ
-                                        7798-70
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>1120</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Гайка
-                                        М10
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ
-                                        5915-70
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>1120</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Шайба
-                                        А10
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ
-                                        6402-70
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>1120</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Шайба
-                                        С10.37
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>ГОСТ
-                                        6958-78
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>120</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Химический
-                                        анкер М24
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>—</td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>300</td>
-                                </tr>
-                                <tr>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Скоба
-                                        П-образная 80×80 мм, М8
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Оцинкованная
-                                        сталь, "Крепком"
-                                    </td>
-                                    <td className={`px-6 py-4 whitespace-nowrap ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>85</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Drawings and Visualization */}
-                <section className="mb-16">
-                    <h2 className={`text-3xl font-bold mb-8 text-center ${
-                        theme === 'dark' ? 'text-white' : 'text-gray-800'
-                    }`}>Чертежи и визуализация</h2>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        <DroneImageSection
-                            title="Вид спереди"
-                            subtitle="Масштаб 1:75"
-                            imageUrl="/placeholder-construction-1.jpg"
-                            altText="Front view of drone protection system"
-                            linkUrl="#"
-                        />
-                        <DroneImageSection
-                            title="Вид сверху"
-                            subtitle="Масшаб 1:15"
-                            imageUrl="/placeholder-construction-2.jpg"
-                            altText="Top view of drone protection system"
-                            linkUrl="#"
-                        />
-                        <DroneImageSection
-                            title="Деталировка узла"
-                            subtitle="Масштаб 1:40"
-                            imageUrl="/placeholder-construction-3.jpg"
-                            altText="Detail view of connection node"
-                            linkUrl="#"
-                        />
-                    </div>
-                </section>
-
-                {/* Testimonials Section */}
-                <section className="mb-16">
-                    <h2 className={`text-3xl font-bold text-center mb-12 ${
-                        theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>
-                        Отзывы клиентов
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[1, 2, 3].map((item) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {services.map((service, index) => (
                             <div
-                                key={item}
-                                className={`rounded-2xl p-6 shadow-lg ${
-                                    theme === 'dark'
-                                        ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                                        : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                                }`}
+                                key={index}
+                                className="bg-card p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-white"
                             >
-                                <div className="flex items-center mb-4">
-                                    <div className={`w-12 h-12 rounded-full ${
-                                        theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
-                                    } flex items-center justify-center mr-4`}>
-                                        <span className="font-bold">ИМ</span>
-                                    </div>
-                                    <div>
-                                        <h4 className={`font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Иван
-                                            М.</h4>
-                                        <div className="flex text-yellow-400">
-                                            {'★'.repeat(5)}
-                                        </div>
-                                    </div>
+                                <div
+                                    className="bg-blue-100 dark:bg-blue-900/30 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                    {service.icon}
                                 </div>
-                                <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-                                    "Отличная система защиты! Установили за один день, теперь чувствуем себя в
-                                    безопасности."
+                                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                                <p className="text-muted-foreground">
+                                    Надежная защита с учетом специфики эксплуатации и окружающей среды
                                 </p>
                             </div>
                         ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* CTA Section */}
-                <section className={`py-16 rounded-3xl my-16 ${
-                    theme === 'dark'
-                        ? 'bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-700'
-                        : 'bg-gradient-to-r from-blue-50 to-indigo-50 border border-gray-200'
-                }`}>
-                    <div className="max-w-3xl mx-auto text-center px-4">
-                        <h2 className={`text-3xl font-bold mb-4 ${
-                            theme === 'dark' ? 'text-white' : 'text-gray-900'
-                        }`}>
-                            Готовы защитить свою территорию?
-                        </h2>
-                        <p className={`text-xl mb-8 ${
-                            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                        }`}>
-                            Свяжитесь с нами сегодня для получения персонализированного коммерческого предложения
-                        </p>
-                        <a
-                            href="/proposal"
-                            className={`inline-block px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 ${
-                                theme === 'dark'
-                                    ? 'bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900'
-                                    : 'bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900'
-                            }`}
-                        >
-                            Запросить предложение
-                        </a>
+            <section className="py-16 bg-muted p-6">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-center mb-4">Принцип работы систем защиты</h2>
+                    <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+                        Главная задача наших конструкций – предотвращение столкновения защищаемого объекта с БПЛА
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {features.map((feature, index) => (
+                            <div
+                                key={index}
+                                className="bg-card p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-white"
+                            >
+                                <div
+                                    className="bg-blue-100 dark:bg-blue-900/30 w-12 h-12 rounded-full flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400">
+                                    {feature.icon}
+                                </div>
+                                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                                <p className="text-muted-foreground">{feature.description}</p>
+                            </div>
+                        ))}
                     </div>
-                </section>
-            </main>
-        </div>
+                </div>
+            </section>
+
+            <section id="process" className="py-16 bg-background text-foreground">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Как мы работаем</h2>
+                    <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+                        Полный цикл проектирования, производства и установки систем защиты
+                    </p>
+
+                    <div className="relative">
+                        {/* Вертикальная линия для десктопа */}
+                        <div
+                            className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-transparent transform -translate-x-1/2"></div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            {steps.map((step, index) => (
+                                <div
+                                    key={index}
+                                    className={`relative flex ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center`}
+                                >
+                                    {/* Линия для мобильных и планшетов */}
+                                    {index < steps.length - 1 && (
+                                        <div
+                                            className="lg:hidden absolute left-6 top-12 h-16 w-0.5 bg-gradient-to-b from-blue-500 to-transparent"></div>
+                                    )}
+
+                                    {/* Номер шага */}
+                                    <div className="flex-shrink-0 relative z-10">
+                                        <div
+                                            className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                                            {index + 1}
+                                        </div>
+                                    </div>
+
+                                    {/* Карточка шага */}
+                                    <div
+                                        className="lg:mx-6 mt-4 lg:mt-0 bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex-grow">
+                                        <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
+                                        <p className="text-muted-foreground">{step.description}</p>
+                                    </div>
+
+                                    {/* Линия между карточками на десктопе */}
+                                    {index < steps.length - 1 && (
+                                        <div
+                                            className="hidden lg:block absolute top-1/2 left-1/2 w-16 h-0.5 bg-gradient-to-r from-blue-500 to-transparent transform -translate-y-1/2"></div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </>
     );
 }
