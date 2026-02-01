@@ -47,22 +47,6 @@ const ClientMarquee: React.FC = () => {
             ))}
           </div>
         </div>
-        
-        <style jsx>{`
-          @keyframes marquee {
-            0% {
-              transform: translateX(0%);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-          
-          .animate-marquee {
-            animation: marquee 25s linear infinite;
-            display: inline-block;
-          }
-        `}</style>
       </div>
     </section>
   );

@@ -21,14 +21,6 @@ const CompanyInfo: React.FC = () => {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <div className='flex justify-center '>
-            <img
-                src="/logo.png"
-                alt="Логотип компании ЛЕГИОН"
-                className="w-24 h-24 object-contain mb-6"
-            />
-          </div>
-
           <h1 className="text-4xl font-bold mb-4">ООО «ЛЕГИОН»</h1>
           <p className="text-xl mb-8">Строительно-монтажная компания</p>
           <div className={`rounded-2xl p-8 max-w-5xl mx-auto ${

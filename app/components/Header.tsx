@@ -19,10 +19,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
-            <span className={`text-xl font-bold ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>ЛЕГИОН</span>
+            <img src="/Logo-1.png" alt="Logo" className="w-auto h-20 object-contain" />
           </Link>
 
           {/* Desktop Navigation - Hidden on screens < 1285px */}
@@ -116,21 +113,6 @@ const Header: React.FC = () => {
               </button>
             </div>
 
-            <Link
-              to="/profile"
-              className={`p-2 rounded-md ${
-                theme === 'dark'
-                  ? 'text-gray-300 hover:bg-gray-700'
-                  : 'text-gray-700 hover:bg-gray-200'
-              }`}
-              aria-label="Профиль"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                   stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-              </svg>
-            </Link>
 
             <button
                 onClick={toggleTheme}

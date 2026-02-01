@@ -9,7 +9,6 @@ export default [
   route("/services", "routes/services.tsx"),
   route("/service/:id", "routes/service-detail.tsx"),
   route("/proposal", "routes/proposal.tsx"),
-  route("/profile", "routes/profile.tsx"),
   route("/drone-defense", "routes/drone-defense.tsx"),
   route("/privacy", "routes/privacy.tsx"),
   route("/terms", "routes/terms.tsx")

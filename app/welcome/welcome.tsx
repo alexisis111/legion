@@ -31,11 +31,6 @@ export function Welcome() {
         <section className={`py-16 text-center `}>
           <div className="container mx-auto px-4">
             <div className="flex flex-col items-center justify-center">
-              <img
-                src="/logo.png"
-                alt="Логотип компании ЛЕГИОН"
-                className="w-24 h-24 object-contain mb-6"
-              />
               <h1 className="text-4xl md:text-6xl font-extrabold tracking-wide uppercase">
                 ООО «ЛЕГИОН»
               </h1>
