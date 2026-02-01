@@ -1,5 +1,6 @@
 import type { ActionFunctionArgs } from "@react-router/node";
-import { json } from "@react-router/node";
+import pkg from "@react-router/node";
+const { json } = pkg;
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   if (request.method !== 'POST') {
