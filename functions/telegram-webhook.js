@@ -23,7 +23,14 @@ exports.handler = async (event, context) => {
     }
 
     // Format the message for Telegram
-    const telegramMessage = `📩 Новое сообщение с сайта:\n\nИмя: ${formData.name}\nEmail: ${formData.email}\nСообщение: ${formData.message}\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
+    let telegramMessage = `📩 Новое сообщение с сайта:\n\nИмя: ${formData.name}\nEmail: ${formData.email}`;
+
+    // Add phone number if provided
+    if (formData.phone) {
+      telegramMessage += `\nТелефон: ${formData.phone}`;
+    }
+
+    telegramMessage += `\nСообщение: ${formData.message}\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
 
     // Send message to Telegram
     const telegramResponse = await fetch(

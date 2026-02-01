@@ -18,6 +18,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     // The Netlify function should be accessible at the root of your domain when deployed
     const netlifyFunctionUrl = '/.netlify/functions/telegram-webhook';
 
+    // Ensure we're sending all form data including optional fields like phone
     const netlifyResponse = await fetch(netlifyFunctionUrl, {
       method: 'POST',
       headers: {
