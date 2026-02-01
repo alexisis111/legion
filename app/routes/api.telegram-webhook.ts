@@ -17,7 +17,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
     // In a React Router + Netlify deployment, we need to call the Netlify function directly
     // The Netlify function should be accessible at the root of your domain when deployed
-    const netlifyFunctionUrl = '/.netlify/functions/telegram-webhook';
+    // Using the origin from the request to construct the full URL
+    const netlifyFunctionUrl = `${new URL(request.url).origin}/.netlify/functions/telegram-webhook`;
 
     // Ensure we're sending all form data including optional fields like phone
     const netlifyResponse = await fetch(netlifyFunctionUrl, {
