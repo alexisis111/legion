@@ -135,7 +135,6 @@ const Header: React.FC = () => {
                 { to: "/", label: "Главная", icon: Star },
                 { to: "/company", label: "О компании", icon: Building2 },
                 { to: "/services", label: "Услуги", icon: Briefcase },
-                { to: "/services?category=Подготовительные работы", label: "Подготовительные работы", icon: Briefcase },
                 { to: "/portfolio", label: "Портфолио", icon: Briefcase },
                 { to: "/contacts", label: "Контакты", icon: MapPin },
                 { to: "/vacancies", label: "Вакансии", icon: Users },
