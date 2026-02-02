@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useParams, useNavigate, useSearchParams } from 'react-router';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, MapPin, Calendar, Package, Hammer, Ruler } from 'lucide-react';
+import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, MapPin, Calendar, Package, Hammer, Ruler, Percent } from 'lucide-react';
 import { Link } from 'react-router';
 
 interface Service {
@@ -19,9 +19,36 @@ interface Service {
 const ServiceDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { theme } = useTheme();
   const [service, setService] = useState<Service | null>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Функция для извлечения числового значения из строки цены
+  const extractNumericValue = (priceStr: string) => {
+    if (!priceStr) return 0;
+    const numericStr = priceStr.replace(/[^\d.-]/g, '');
+    return parseFloat(numericStr) || 0;
+  };
+
+  // Функция для расчета цены со скидкой
+  const calculateDiscountedPrice = (priceStr: string) => {
+    const numericPrice = extractNumericValue(priceStr);
+    const discountAmount = numericPrice * 0.25; // 25% скидка
+    const discountedPrice = numericPrice - discountAmount;
+
+    // Извлекаем единицы измерения из строки цены (руб/м², руб/п.м., руб/т и т.д.)
+    const unitMatch = priceStr.match(/(руб\/[а-яё]+|руб|р\.)/gi);
+    const unit = unitMatch ? unitMatch[0] : 'руб';
+
+    // Форматируем результат с сохранением текста
+    return `${Math.round(discountedPrice).toLocaleString('ru-RU')} ${unit}`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +58,37 @@ const ServiceDetailPage: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Устанавливаем таймер обратного отсчета (24 часа от текущего времени)
+  useEffect(() => {
+    if (searchParams.get('discount') === 'true') {
+      const calculateTimeLeft = () => {
+        const now = new Date();
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0); // Устанавливаем на полночь следующего дня
+
+        const difference = tomorrow.getTime() - now.getTime();
+
+        if (difference <= 0) {
+          return { hours: 0, minutes: 0, seconds: 0 };
+        }
+
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        return { hours, minutes, seconds };
+      };
+
+      const timer = setInterval(() => {
+        const timeLeftObj = calculateTimeLeft();
+        setTimeLeft(timeLeftObj);
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [searchParams]);
 
   // Particle background for hero
   const Particles = () => {
@@ -573,7 +631,45 @@ const ServiceDetailPage: React.FC = () => {
                     <Ruler className="w-5 h-5 text-blue-400" />
                     <span className="text-white font-semibold">Стоимость:</span>
                   </div>
-                  <div className="text-3xl font-bold text-white">{service.price}</div>
+
+                  {searchParams.get('discount') === 'true' && [1, 2, 3].includes(parseInt(id || '0')) ? (
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-300">Цена:</span>
+                        <span className="line-through text-gray-300">{service.price}</span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-white font-semibold">Со скидкой:</span>
+                        <div className="text-3xl font-bold text-green-400">
+                          {calculateDiscountedPrice(service.price)}
+                        </div>
+                      </div>
+
+                      <div className="mt-4 p-3 rounded-lg bg-white/10 backdrop-blur-sm">
+                        <div className="flex items-center gap-2">
+                          <Percent className="w-4 h-4 text-yellow-400" />
+                          <span className="text-yellow-400 font-semibold">Специальное предложение на 24 часа</span>
+                        </div>
+                        <div className="mt-2 flex justify-center gap-2">
+                          <div className="text-center">
+                            <div className="text-lg font-bold text-white">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                            <div className="text-xs text-gray-300">Часов</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-lg font-bold text-white">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                            <div className="text-xs text-gray-300">Минут</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-lg font-bold text-white">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                            <div className="text-xs text-gray-300">Секунд</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-3xl font-bold text-white">{service.price}</div>
+                  )}
                 </motion.div>
               )}
 

@@ -736,7 +736,7 @@ const ProposalPage: React.FC = () => {
 
                     <div className="flex gap-3">
                       <Link
-                        to={`/services#${service.id}`}
+                        to={`/service/${service.id}?discount=true&serviceId=${service.id}`}
                         className="flex-1 text-center py-3 px-4 rounded-lg font-medium transition-all bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20"
                       >
                         Подробнее

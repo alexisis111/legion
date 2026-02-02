@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
+import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, Percent } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router';
 
 interface Service {
   id: number;
@@ -15,8 +15,35 @@ interface Service {
 
 const ServicesCatalog: React.FC = () => {
   const { theme } = useTheme();
+  const [searchParams] = useSearchParams();
   const [scrollY, setScrollY] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Функция для извлечения числового значения из строки цены
+  const extractNumericValue = (priceStr: string) => {
+    if (!priceStr) return 0;
+    const numericStr = priceStr.replace(/[^\d.-]/g, '');
+    return parseFloat(numericStr) || 0;
+  };
+
+  // Функция для расчета цены со скидкой
+  const calculateDiscountedPrice = (priceStr: string) => {
+    const numericPrice = extractNumericValue(priceStr);
+    const discountAmount = numericPrice * 0.25; // 25% скидка
+    const discountedPrice = numericPrice - discountAmount;
+
+    // Извлекаем единицы измерения из строки цены (руб/м², руб/п.м., руб/т и т.д.)
+    const unitMatch = priceStr.match(/(руб\/[а-яё]+|руб|р\.)/gi);
+    const unit = unitMatch ? unitMatch[0] : 'руб';
+
+    // Форматируем результат с сохранением текста
+    return `${Math.round(discountedPrice).toLocaleString('ru-RU')} ${unit}`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +53,37 @@ const ServicesCatalog: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Устанавливаем таймер обратного отсчета (24 часа от текущего времени)
+  useEffect(() => {
+    if (searchParams.get('discount') === 'true') {
+      const calculateTimeLeft = () => {
+        const now = new Date();
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0); // Устанавливаем на полночь следующего дня
+
+        const difference = tomorrow.getTime() - now.getTime();
+
+        if (difference <= 0) {
+          return { hours: 0, minutes: 0, seconds: 0 };
+        }
+
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        return { hours, minutes, seconds };
+      };
+
+      const timer = setInterval(() => {
+        const timeLeftObj = calculateTimeLeft();
+        setTimeLeft(timeLeftObj);
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [searchParams]);
 
   // Particle background for hero
   const Particles = () => {
@@ -559,6 +617,50 @@ const ServicesCatalog: React.FC = () => {
                     {service.description}
                   </p>
 
+                  <div className="mb-4">
+                    {service.price && (
+                      <div className={`rounded-lg p-3 ${
+                        searchParams.get('discount') === 'true' && [1, 2, 3].includes(service.id)
+                          ? 'bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-sm'
+                          : 'bg-white/10 backdrop-blur-sm'
+                      }`}>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gray-500 dark:text-gray-400">Цена:</span>
+                          <span className="font-medium text-gray-900 dark:text-white">{service.price}</span>
+                        </div>
+
+                        {searchParams.get('discount') === 'true' && [1, 2, 3].includes(service.id) && (
+                          <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-green-600 dark:text-green-400">Со скидкой:</span>
+                              <span className="font-bold text-green-600 dark:text-green-400">
+                                {calculateDiscountedPrice(service.price)}
+                              </span>
+                            </div>
+                            <div className="mt-1 text-xs text-yellow-600 dark:text-yellow-400 flex items-center">
+                              <Percent className="w-3 h-3 mr-1" />
+                              Специальное предложение
+                            </div>
+                            <div className="mt-2 flex justify-center gap-1">
+                              <div className="text-center">
+                                <div className="text-sm font-bold text-white">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                                <div className="text-xs text-gray-300">Ч</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="text-sm font-bold text-white">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                                <div className="text-xs text-gray-300">М</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="text-sm font-bold text-white">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                                <div className="text-xs text-gray-300">С</div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
                   <div className="mb-6">
                     <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
                       Включает:
@@ -575,7 +677,11 @@ const ServicesCatalog: React.FC = () => {
 
                   <div className="flex gap-3">
                     <Link
-                      to={`/service/${service.id}`}
+                      to={
+                        [1, 2, 3].includes(service.id)
+                          ? `/service/${service.id}?discount=true&serviceId=${service.id}`
+                          : `/service/${service.id}`
+                      }
                       className="flex-1 text-center py-3 px-4 rounded-lg font-medium transition-all bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20"
                     >
                       Подробнее
