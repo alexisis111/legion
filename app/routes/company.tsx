@@ -1,5 +1,5 @@
 import type { Route } from "./+types/company";
-import CompanyInfo from "../components/CompanyInfo";
+import CompanyShowcase from "../components/CompanyShowcase";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Company() {
-  return <CompanyInfo />;
+  return <CompanyShowcase />;
 }

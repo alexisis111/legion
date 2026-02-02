@@ -1,341 +1,471 @@
 import { useTheme } from "../contexts/ThemeContext";
-import InfographicCard from "../components/InfographicCard";
-import DroneImageSection from "../components/DroneImageSection";
-import ImageSlider from "../components/ImageSlider";
-import LicenseGallery from "../components/LicenseGallery";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router';
+import { ChevronRight, ArrowRight, Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle } from 'lucide-react';
 
-import { useState } from 'react';
+
 
 export function Welcome() {
   const { theme } = useTheme();
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
-  // Пока тема не определена, можно показать заглушку или ничего не отображать
-  if (typeof window !== 'undefined' && !localStorage.getItem('theme')) {
-    // Если тема еще не сохранена в localStorage, значит компонент загружается впервые
-    // и мы можем показать пустой div, чтобы избежать мерцания
-    return <div className="py-4 px-4 min-h-screen bg-gray-50 dark:bg-gray-900" />;
-  }
-  const [isLicenseGalleryOpen, setIsLicenseGalleryOpen] = useState(false);
-  const [selectedLicenseIndex, setSelectedLicenseIndex] = useState(0);
+  useEffect(() => {
+    setIsVisible(true);
 
-  const licenseImages = [
-    { src: "/license_1.jpg", alt: "Свидетельство о членстве в СРО" },
-    { src: "/license_1.2.jpg", alt: "Дополнительные сертификаты" },
-    { src: "/license_2.jpg", alt: "Лицензия на строительные работы" }
-  ];
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Particle background for hero
+  const Particles = () => {
+    const particles = Array.from({ length: 30 });
+    return (
+        <div className="absolute inset-0 overflow-hidden">
+          {particles.map((_, i) => (
+              <motion.div
+                  key={i}
+                  className="absolute w-[2px] h-[2px] bg-white/20 rounded-full"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                  }}
+                  animate={{
+                    y: [0, -20, 0],
+                    opacity: [0.2, 0.8, 0.2],
+                  }}
+                  transition={{
+                    duration: 2 + Math.random() * 2,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                  }}
+              />
+          ))}
+        </div>
+    );
+  };
 
   return (
-    <main className="py-4 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Company Advertisement Section */}
-        <section className={`py-16 text-center `}>
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-wide uppercase">
-                ООО «ЛЕГИОН»
-              </h1>
-              <p className="text-xl md:text-2xl mt-4 max-w-3xl mx-auto uppercase">
-                Профессиональные строительно-монтажные работы
-              </p>
-            </div>
-          </div>
-        </section>
+      <div className="relative overflow-hidden">
+        <main className="relative">
+          {/* Hero Section - Redesigned */}
+          <section className="relative min-h-screen flex items-center overflow-hidden">
+            {/* Background with parallax effect */}
+            <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900"
+                style={{ y: scrollY * 0.5 }}
+            >
+              <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center mix-blend-overlay opacity-20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
+              </div>
+              <Particles />
 
-        {/* Hero Section - Full Width Slider */}
-        <section className="relative overflow-hidden -mx-4 md:-mx-8 lg:-mx-16">
-          <div className="absolute inset-0 opacity-10 dark:opacity-5">
-            <div
-                className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-            <div
-                className="absolute top-1/3 right-1/4 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-            <div
-                className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-          </div>
-          <div className="relative z-10">
-            <ImageSlider
-                slides={[
+              {/* Animated grid */}
+              <div className="absolute inset-0">
+                {Array.from({ length: 12 }).map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute h-px w-full bg-gradient-to-r from-transparent via-white/5 to-transparent"
+                        style={{ top: `${i * 8}%` }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: [0, 0.3, 0] }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: i * 0.2,
+                        }}
+                    />
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Content */}
+            <div className="relative container mx-auto px-4 z-10">
+              <div className="grid lg:grid-cols-2 gap-12 items-center py-32">
+                {/* Left column - Main content */}
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="space-y-8"
+                >
+                  {/* Badge */}
+                  <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20"
+                  >
+                    <Shield className="w-4 h-4" />
+                    <span className="text-sm font-medium text-white">С 2012 года на рынке</span>
+                  </motion.div>
+
+                  {/* Main heading */}
+                  <motion.h1
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white"
+                  >
+                    <span className="block">СТРОИТЕЛЬНАЯ</span>
+                    <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    КОМПАНИЯ
+                  </span>
+                    <span className="block">«ЛЕГИОН»</span>
+                  </motion.h1>
+
+                  {/* Subtitle */}
+                  <motion.p
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="text-xl text-gray-300 max-w-2xl"
+                  >
+                    Профессиональные строительно-монтажные работы любой сложности.
+                    От проектирования до сдачи объекта «под ключ».
+                  </motion.p>
+
+                  {/* Stats */}
+                  <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                  >
+                    {[
+                      { value: "12+", label: "Лет опыта" },
+                      { value: "150+", label: "Проектов" },
+                      { value: "100%", label: "Гарантия" },
+                      { value: "24/7", label: "Поддержка" },
+                    ].map((stat, i) => (
+                        <div key={i} className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+                          <div className="text-2xl font-bold text-white">{stat.value}</div>
+                          <div className="text-sm text-gray-400">{stat.label}</div>
+                        </div>
+                    ))}
+                  </motion.div>
+
+                  {/* CTA Buttons */}
+                  <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="flex flex-wrap gap-4"
+                  >
+                    <Link
+                        to="/contacts"
+                        className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+                    >
+                      <span>Начать проект</span>
+                      <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+
+                    <Link
+                        to="/services"
+                        className="group inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300"
+                    >
+                      <span>Наши услуги</span>
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </motion.div>
+                </motion.div>
+
+                {/* Right column - Feature cards */}
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="space-y-6"
+                >
+                  {[
+                    {
+                      icon: <Shield className="w-6 h-6" />,
+                      title: "Защита от БПЛА",
+                      description: "Современные системы защиты периметра",
+                      color: "from-blue-500 to-cyan-500"
+                    },
+                    {
+                      icon: <Building2 className="w-6 h-6" />,
+                      title: "Строительство",
+                      description: "Полный цикл от фундамента до отделки",
+                      color: "from-purple-500 to-pink-500"
+                    },
+                    {
+                      icon: <Target className="w-6 h-6" />,
+                      title: "Точность работ",
+                      description: "Соблюдение всех нормативов и сроков",
+                      color: "from-orange-500 to-red-500"
+                    },
+                    {
+                      icon: <Zap className="w-6 h-6" />,
+                      title: "Скорость",
+                      description: "Оперативное выполнение задач",
+                      color: "from-green-500 to-emerald-500"
+                    }
+                  ].map((feature, i) => (
+                      <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: 30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.4 + i * 0.1 }}
+                          whileHover={{ x: -10 }}
+                          className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className={`p-3 rounded-xl bg-gradient-to-br ${feature.color}`}>
+                            {feature.icon}
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                            <p className="text-gray-400">{feature.description}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Scroll indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+                className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            >
+              <motion.div
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="text-white/50"
+              >
+                <ChevronRight className="w-6 h-6 rotate-90" />
+              </motion.div>
+            </motion.div>
+          </section>
+
+          {/* Why Choose Us Section */}
+          <section className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
+            <div className="container mx-auto px-4">
+              <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-16"
+              >
+                <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full px-4 py-2 mb-4">
+                  <Award className="w-4 h-4" />
+                  <span className="text-sm font-medium">Наше преимущество</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                  Почему выбирают нас
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                  Комплексный подход и внимание к деталям делают нас лидером в строительной отрасли
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
                   {
-                    imageUrl: "https://www.npo-geostroy.ru/photos/zashchita-ot-bpla.jpg",
-                    title: "Защита от беспилотников",
-                    description: "Современные решения для обеспечения безопасности вашей территории",
-                    alt: "Drone Protection System",
-                    linkUrl: "/drone-defense",
-                    showNewBadge: true
+                    icon: <Clock className="w-8 h-8" />,
+                    title: "Соблюдение сроков",
+                    description: "Строгое соблюдение договорных обязательств и этапов строительства"
                   },
                   {
-                    imageUrl: "https://rosstip.ru/images/editorjs/66/66e2f76e.webp",
-                    title: "Широкий спектр услуг",
-                    description: "Каталог услуг с приятными ценами",
-                    alt: "Drone Shield Construction",
-                    linkUrl: "/services"
+                    icon: <CheckCircle className="w-8 h-8" />,
+                    title: "Качество работ",
+                    description: "Использование только проверенных материалов и технологий"
                   },
                   {
-                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl1scIzO0ZTjUPIFwtA37-DScMJHeFzZYVKA&s",
-                    title: "Выгодное предложение",
-                    description: "Получите отличную скидку при заказе у нас",
-                    alt: "Security Installation",
-                    linkUrl: "/proposal"
+                    icon: <Users className="w-8 h-8" />,
+                    title: "Опытная команда",
+                    description: "Квалифицированные специалисты с многолетним опытом"
+                  },
+                  {
+                    icon: <Shield className="w-8 h-8" />,
+                    title: "Гарантия",
+                    description: "Гарантия на все виды работ от 2 до 5 лет"
                   }
-                ]}
-            />
-          </div>
-        </section>
-
-
-        {/* Features Section */}
-        <section id="features" className="py-16">
-          <h2 className="text-3xl font-bold text-center mb-16 text-gray-900 dark:text-white">
-            Наши преимущества
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className={`rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
-                  theme === 'dark'
-                    ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                    : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                }`}
-              >
-                <div className={`w-14 h-14 rounded-lg flex items-center justify-center mb-4 ${
-                  theme === 'dark'
-                    ? 'bg-blue-900/30 text-blue-400'
-                    : 'bg-blue-100 text-blue-600'
-                }`}>
-                  {feature.icon}
-                </div>
-                <h3 className={`text-xl font-bold mb-2 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
-                  {feature.title}
-                </h3>
-                <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Visual Section */}
-        <section className="py-16">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            Подход в работе
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <DroneImageSection
-              title="Этап 1"
-              subtitle="Проектирование"
-              imageUrl="https://www.ecodom.su/upload/iblock/06c/4myi5r88y9qcmlpjtm16kzkpcpl7t7dp.jpg"
-              altText="Drone protection system design"
-            />
-            <DroneImageSection
-              title="Этап 2"
-              subtitle="Установка"
-              imageUrl="https://novosibirsk.allplans.ru/upload/iblock/a69/12-e1528823132516%20(1).jpg"
-              altText="Installation of drone protection system"
-            />
-            <DroneImageSection
-              title="Этап 3"
-              subtitle="Эксплуатация"
-              imageUrl="https://soyuzmash.ru/upload/iblock/203/203aedbeea7e24dc9751185f4385fe8a.jpg"
-              altText="Drone protection system in operation"
-            />
-          </div>
-        </section>
-
-        {/* Clients Marquee */}
-        <section className="py-12 ">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
-            Наши клиенты
-          </h2>
-          <div className="relative overflow-hidden py-8 dark:from-gray-800 dark:to-gray-900 px-4 ">
-            <div className="animate-marquee whitespace-nowrap flex absolute top-0">
-              {[
-                "ООО «Андритц»",
-                "ООО «Дорпромгранит»",
-                "ЗАО «КБР ИСТ»",
-                "ООО «НТЛ Упаковка»",
-                "ООО «НХТ»",
-                "ЗАО «РОСТЭК-Выборг»",
-                "ООО «Эссити»",
-                "МБДОУ «Детский сад Каменногорска»",
-                "КФ ЛО, ЛОГКУ «Каменногорский ДИ»",
-                "КФ МО ВРЛО МБОУ «Каменногорский ЦО»",
-                "ГБ ПОУ ЛО «Политехнический колледж» города Светогорска."
-              ].map((client, index) => (
-                  <div
-                      key={`duplicate-${index}`}
-                      className={`mx-4 inline-block px-6 py-3 rounded-lg ${
-                          theme === 'dark'
-                              ? 'bg-gradient-to-r from-gray-700 to-gray-800 border border-gray-600 text-gray-300'
-                              : 'bg-gradient-to-r from-white to-gray-100 border border-gray-200 text-gray-700'
-                      }`}
-                  >
-                    <span className="font-medium">{client}</span>
-                  </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-16">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            Отзывы
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <div
-                key={item}
-                className={`rounded-2xl p-6 shadow-lg ${
-                  theme === 'dark'
-                    ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                    : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-                }`}
-              >
-                <div className="flex items-center mb-4">
-                  <div className={`w-12 h-12 rounded-full ${
-                    theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
-                  } flex items-center justify-center mr-4`}>
-                    <span className="font-bold">ИМ</span>
-                  </div>
-                  <div>
-                    <h4 className={`font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Иван М.</h4>
-                    <div className="flex text-yellow-400">
-                      {'★'.repeat(5)}
-                    </div>
-                  </div>
-                </div>
-                <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-                  "Отличная система защиты! Установили за один день, теперь чувствуем себя в безопасности."
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-
-
-
-        {/* Licenses Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-              Наша лицензия и сертификаты
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className={`rounded-2xl p-6 shadow-lg ${
-                  theme === 'dark'
-                      ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                      : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-              }`}>
-                <div className="flex justify-center">
-                  <button
-                    onClick={() => {
-                      setIsLicenseGalleryOpen(true);
-                      setSelectedLicenseIndex(0);
-                    }}
-                    className="focus:outline-none"
-                  >
-                    <img
-                      src="/license_1.jpg"
-                      alt="Свидетельство о членстве в СРО"
-                      className="max-w-full h-auto rounded-lg border border-gray-300 cursor-pointer hover:opacity-90 transition-opacity"
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className={`rounded-2xl p-6 shadow-lg ${
-                  theme === 'dark'
-                      ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                      : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-              }`}>
-                <div className="flex justify-center">
-                  <button
-                    onClick={() => {
-                      setIsLicenseGalleryOpen(true);
-                      setSelectedLicenseIndex(1);
-                    }}
-                    className="focus:outline-none"
-                  >
-                    <img
-                      src="/license_1.2.jpg"
-                      alt="Дополнительные сертификаты"
-                      className="max-w-full h-auto rounded-lg border border-gray-300 cursor-pointer hover:opacity-90 transition-opacity"
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className={`rounded-2xl p-6 shadow-lg ${
-                  theme === 'dark'
-                      ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
-                      : 'bg-gradient-to-br from-white to-gray-100 border border-gray-200'
-              }`}>
-                <div className="flex justify-center">
-                  <button
-                    onClick={() => {
-                      setIsLicenseGalleryOpen(true);
-                      setSelectedLicenseIndex(2);
-                    }}
-                    className="focus:outline-none"
-                  >
-                    <img
-                      src="/license_2.jpg"
-                      alt="Лицензия на строительные работы"
-                      className="max-w-full h-auto rounded-lg border border-gray-300 cursor-pointer hover:opacity-90 transition-opacity"
-                    />
-                  </button>
-                </div>
+                ].map((item, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        className="group relative"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300" />
+                      <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-6">
+                          {item.icon}
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                          {item.title}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-300">
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
+          {/* Services Section */}
+          <section className="py-24">
+            <div className="container mx-auto px-4">
+              <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-16"
+              >
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                  Наши основные услуги
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                  Полный спектр строительно-монтажных работ для реализации ваших проектов
+                </p>
+              </motion.div>
 
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "Подготовительные работы",
+                    description: "Полный комплекс подготовительных работ для начала строительства",
+                    features: ["Демонтаж конструкций", "Подготовка участка", "Устройство лесов", "Благоустройство"],
+                    color: "from-blue-500 to-cyan-500"
+                  },
+                  {
+                    title: "Строительство зданий",
+                    description: "Возведение промышленных и гражданских объектов под ключ",
+                    features: ["Фундаментные работы", "Монтаж конструкций", "Кровельные работы", "Отделка"],
+                    color: "from-purple-500 to-pink-500"
+                  },
+                  {
+                    title: "Металлоконструкции",
+                    description: "Изготовление и монтаж металлических конструкций любой сложности",
+                    features: ["Проектирование", "Изготовление", "Монтаж", "Антикоррозийная защита"],
+                    color: "from-orange-500 to-red-500"
+                  },
+                  {
+                    title: "Теплоизоляция",
+                    description: "Работы по теплоизоляции оборудования и трубопроводов",
+                    features: ["Теплоизоляция труб", "Энергосбережение", "Защита оборудования", "Монтаж"],
+                    color: "from-green-500 to-emerald-500"
+                  },
+                  {
+                    title: "Защита от БПЛА",
+                    description: "Современные системы защиты периметра от беспилотников",
+                    features: ["Установка систем", "Настройка", "Обслуживание", "Консультации"],
+                    color: "from-indigo-500 to-blue-500"
+                  },
+                  {
+                    title: "Дополнительные услуги",
+                    description: "Широкий спектр дополнительных строительных услуг",
+                    features: ["Земляные работы", "Грузоперевозки", "Огнезащита", "Ремонтные работы"],
+                    color: "from-yellow-500 to-orange-500"
+                  }
+                ].map((service, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        whileHover={{ y: -10 }}
+                        className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300"
+                    >
+                      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 group-hover:opacity-20 transition-opacity duration-300 rounded-full -translate-y-16 translate-x-16`} />
 
-        {/* License Gallery Modal */}
-        <LicenseGallery
-          isOpen={isLicenseGalleryOpen}
-          onClose={() => setIsLicenseGalleryOpen(false)}
-          images={licenseImages}
-          startIndex={selectedLicenseIndex}
-        />
+                      <div className="relative p-8">
+                        <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${service.color} text-white mb-6`}>
+                          <Building2 className="w-6 h-6" />
+                        </div>
+
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                          {service.title}
+                        </h3>
+
+                        <p className="text-gray-600 dark:text-gray-300 mb-6">
+                          {service.description}
+                        </p>
+
+                        <ul className="space-y-3 mb-8">
+                          {service.features.map((feature, j) => (
+                              <li key={j} className="flex items-center gap-3">
+                                <CheckCircle className="w-5 h-5 text-green-500" />
+                                <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                              </li>
+                          ))}
+                        </ul>
+
+                        <Link
+                            to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group/link"
+                        >
+                          <span>Подробнее</span>
+                          <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
+                    </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600">
+            <div className="container mx-auto px-4">
+              <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-center text-white"
+              >
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  Готовы начать проект?
+                </h2>
+
+                <p className="text-xl opacity-90 max-w-3xl mx-auto mb-12">
+                  Оставьте заявку и получите бесплатную консультацию от наших экспертов.
+                  Мы поможем реализовать ваш проект с учетом всех требований и пожеланий.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link
+                      to="/contacts"
+                      className="group inline-flex items-center justify-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                  >
+                    <span>Обсудить проект</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <Link
+                      to="/portfolio"
+                      className="group inline-flex items-center justify-center gap-3 bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white hover:bg-white/10 transition-all duration-300"
+                  >
+                    <span>Посмотреть работы</span>
+                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+
+                <p className="mt-8 opacity-75">
+                  Или позвоните нам: <span className="font-bold">+7 (XXX) XXX-XX-XX</span>
+                </p>
+              </motion.div>
+            </div>
+          </section>
+        </main>
       </div>
-    </main>
   );
 }
-
-const features = [
-  {
-    title: "Надежная защита",
-    description: "Наша система эффективно предотвращает проникновение беспилотников на охраняемую территорию.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    )
-  },
-  {
-    title: "Простота установки",
-    description: "Сборно-разборная конструкция позволяет быстро монтировать систему без специальной техники.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    )
-  },
-  {
-    title: "Долговечность",
-    description: "Конструкция изготовлена из высокопрочных материалов, устойчивых к коррозии и агрессивной среде.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    )
-  }
-];

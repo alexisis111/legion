@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="tg" />
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="tg">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/ClientMarquee.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Contacts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/LicenseGallery.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/company.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/company.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/contacts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/drone-defense.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/drone-defense.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/portfolio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/portfolio.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/proposal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/proposal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/services.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/vacancies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/vacancies.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/welcome/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/welcome/welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,6 +89,7 @@
       <workItem from="1769112532429" duration="6398000" />
       <workItem from="1769246423262" duration="15669000" />
       <workItem from="1769272094565" duration="14776000" />
+      <workItem from="1770059738758" duration="4499000" />
     </task>
     <task id="LOCAL-00001" summary="netlify">
       <option name="closed" value="true" />

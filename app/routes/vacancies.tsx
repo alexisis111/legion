@@ -1,5 +1,5 @@
 import type { Route } from "./+types/vacancies";
-import Vacancies from "../components/Vacancies";
+import VacanciesGallery from "../components/VacanciesGallery";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +8,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function VacanciesPage() {
-  return <Vacancies />;
+export default function VacanciesRoute() {
+  return <VacanciesGallery />;
 }

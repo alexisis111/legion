@@ -1,5 +1,5 @@
 import type { Route } from "./+types/drone-defense";
-import DroneDefense from "../components/DroneDefense";
+import DroneDefensePage from "../components/DroneDefensePage";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +8,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function DroneDefensePage() {
-  return <DroneDefense />;
+export default function DroneDefenseRoute() {
+  return <DroneDefensePage />;
 }

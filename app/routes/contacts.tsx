@@ -1,5 +1,5 @@
 import type { Route } from "./+types/contacts";
-import Contacts from "../components/Contacts";
+import ContactsPage from "../components/ContactsPage";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +8,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function ContactsPage() {
-  return <Contacts />;
+export default function ContactsRoute() {
+  return <ContactsPage />;
 }

@@ -1,5 +1,5 @@
 import type { Route } from "./+types/portfolio";
-import Portfolio from "../components/Portfolio";
+import PortfolioGallery from "../components/PortfolioGallery";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function PortfolioPage() {
-  return <Portfolio />;
+  return <PortfolioGallery />;
 }

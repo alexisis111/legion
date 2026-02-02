@@ -1,5 +1,5 @@
 import type { Route } from "./+types/services";
-import ServicesShowcase from "../components/ServicesShowcase";
+import ServicesCatalog from "../components/ServicesCatalog";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function ServicesPage() {
-  return <ServicesShowcase />;
+  return <ServicesCatalog />;
 }
