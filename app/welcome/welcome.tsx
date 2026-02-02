@@ -61,7 +61,7 @@ export function Welcome() {
                 style={{ y: scrollY * 0.5 }}
             >
               <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center mix-blend-overlay opacity-20" />
+                <div className="absolute inset-0 bg-[url('https://ladystory.ru/wp-content/uploads/2026/01/2568f21c-925a-4b4d-9b62-77b6be691965-6827017.jpeg')] bg-cover bg-center mix-blend-overlay opacity-20" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
               </div>

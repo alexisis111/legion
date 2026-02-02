@@ -56,7 +56,7 @@ const DroneDefensePage: React.FC = () => {
           style={{ y: scrollY * 0.5 }}
         >
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center mix-blend-overlay opacity-20" />
+            <div className="absolute inset-0 bg-[url('https://www.promstroysever.ru/upload/iblock/780/0ee4fjsuiqq2v92s7jndm7kopb0aa5ry.png')] bg-cover bg-center mix-blend-overlay opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
@@ -350,22 +350,26 @@ const DroneDefensePage: React.FC = () => {
               {
                 icon: <Building2 className="w-8 h-8" />,
                 title: "Промышленные объекты",
-                description: "Защита производственных площадок и складов"
+                description: "Защита производственных площадок и складов",
+                imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               },
               {
                 icon: <Users className="w-8 h-8" />,
                 title: "Государственные учреждения",
-                description: "Объекты с особым режимом безопасности"
+                description: "Объекты с особым режимом безопасности",
+                imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               },
               {
                 icon: <Shield className="w-8 h-8" />,
                 title: "Военные базы",
-                description: "Объекты с ограниченным доступом"
+                description: "Объекты с ограниченным доступом",
+                imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               },
               {
                 icon: <Target className="w-8 h-8" />,
                 title: "Критическая инфраструктура",
-                description: "Энергетические и транспортные объекты"
+                description: "Энергетические и транспортные объекты",
+                imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               }
             ].map((application, i) => (
               <motion.div
@@ -374,17 +378,27 @@ const DroneDefensePage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center"
+                className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300"
               >
-                <div className="inline-flex p-5 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-6">
-                  {application.icon}
+                <div className="relative h-40 overflow-hidden">
+                  <img
+                    src={application.imageUrl}
+                    alt={application.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {application.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {application.description}
-                </p>
+                <div className="p-6">
+                  <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-4">
+                    {application.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    {application.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {application.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>

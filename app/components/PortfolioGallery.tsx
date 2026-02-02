@@ -66,7 +66,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Северо-Запад России",
       year: "2022",
       category: "construction",
-      imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-1.jpg"
     },
     {
       id: 2,
@@ -75,7 +75,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2023",
       category: "construction",
-      imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-2.jpg"
     },
     {
       id: 3,
@@ -84,7 +84,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Выборгский район",
       year: "2022",
       category: "construction",
-      imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-3.jpg"
     },
     {
       id: 4,
@@ -93,7 +93,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2025",
       category: "maintenance",
-      imageUrl: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-4.jpg"
     },
     {
       id: 5,
@@ -102,7 +102,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Северо-Запад России",
       year: "2022",
       category: "construction",
-      imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-5.jpg"
     },
     {
       id: 6,
@@ -111,7 +111,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2024",
       category: "maintenance",
-      imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-6.jpg"
     },
     {
       id: 7,
@@ -120,7 +120,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2025",
       category: "maintenance",
-      imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-7.jpg"
     },
     {
       id: 8,
@@ -129,7 +129,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2023",
       category: "security",
-      imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-1.jpg"
     },
     {
       id: 9,
@@ -138,7 +138,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Выборгский район",
       year: "2024",
       category: "construction",
-      imageUrl: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "/portfolio-2.jpg"
     }
   ];
 
@@ -157,7 +157,7 @@ const PortfolioGallery: React.FC = () => {
           style={{ y: scrollY * 0.5 }}
         >
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center mix-blend-overlay opacity-20" />
+            <div className="absolute inset-0 bg-[url('https://gbistroj.ru/img/1034/gb_4.jpg')] bg-cover bg-center mix-blend-overlay opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
@@ -420,16 +420,6 @@ const PortfolioGallery: React.FC = () => {
                       <Calendar className="w-4 h-4 mr-1" />
                       <span>{project.year}</span>
                     </div>
-                  </div>
-
-                  <div className="mt-6">
-                    <Link
-                      to={`/portfolio/${project.id}`}
-                      className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group/link"
-                    >
-                      <span>Подробнее</span>
-                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
                   </div>
                 </div>
               </motion.div>

@@ -55,7 +55,7 @@ const ContactsPage: React.FC = () => {
           style={{ y: scrollY * 0.5 }}
         >
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center mix-blend-overlay opacity-20" />
+            <div className="absolute inset-0 bg-[url('https://sacmi.com/SacmiCorporate/media/Corporate/Default%20Pict/Form-contatti_2-3.jpg')] bg-cover bg-center mix-blend-overlay opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
@@ -351,15 +351,19 @@ const ContactsPage: React.FC = () => {
           </motion.div>
 
           <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl">
-            <div className="h-96 flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
-              <div className="text-center p-8">
-                <MapPin className="w-16 h-16 text-blue-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">188992, Ленинградская обл.</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-2">Выборгский район, г. Светогорск</p>
-                <p className="text-gray-600 dark:text-gray-300">ул. Максима Горького, д. 7</p>
-                <p className="mt-4 text-gray-500 dark:text-gray-400 italic">
-                  Карта с расположением офиса будет добавлена в ближайшее время
-                </p>
+            <div className="relative h-96">
+              <img
+                src="https://images.unsplash.com/photo-1569163139394-de4e4f7bf67b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Офис компании ООО 'ЛЕГИОН'"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-center justify-center">
+                <div className="text-center p-8">
+                  <MapPin className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-white mb-2">188992, Ленинградская обл.</h3>
+                  <p className="text-blue-200 mb-2">Выборгский район, г. Светогорск</p>
+                  <p className="text-blue-200">ул. Максима Горького, д. 7</p>
+                </div>
               </div>
             </div>
           </div>

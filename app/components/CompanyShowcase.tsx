@@ -54,7 +54,7 @@ const CompanyShowcase: React.FC = () => {
           style={{ y: scrollY * 0.5 }}
         >
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center mix-blend-overlay opacity-20" />
+            <div className="absolute inset-0 bg-[url('https://eanews.ru/ean_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMCsxQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--978ff62d370378b756f32ca05c04e3dbadf32481/ean-news-2026-01-31-0952-04626.jpg')] bg-cover bg-center mix-blend-overlay opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
@@ -403,37 +403,43 @@ const CompanyShowcase: React.FC = () => {
                 title: "Подготовительные работы",
                 description: "Полный комплекс подготовительных работ для начала строительства",
                 features: ["Демонтаж конструкций", "Подготовка участка", "Устройство лесов", "Благоустройство"],
-                color: "from-blue-500 to-cyan-500"
+                color: "from-blue-500 to-cyan-500",
+                imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               },
               {
                 title: "Строительство зданий",
                 description: "Возведение промышленных и гражданских объектов под ключ",
                 features: ["Фундаментные работы", "Монтаж конструкций", "Кровельные работы", "Отделка"],
-                color: "from-purple-500 to-pink-500"
+                color: "from-purple-500 to-pink-500",
+                imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               },
               {
                 title: "Металлоконструкции",
                 description: "Изготовление и монтаж металлических конструкций любой сложности",
                 features: ["Проектирование", "Изготовление", "Монтаж", "Антикоррозийная защита"],
-                color: "from-orange-500 to-red-500"
+                color: "from-orange-500 to-red-500",
+                imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               },
               {
                 title: "Теплоизоляция",
                 description: "Работы по теплоизоляции оборудования и трубопроводов",
                 features: ["Теплоизоляция труб", "Энергосбережение", "Защита оборудования", "Монтаж"],
-                color: "from-green-500 to-emerald-500"
+                color: "from-green-500 to-emerald-500",
+                imageUrl: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               },
               {
                 title: "Защита от БПЛА",
                 description: "Современные системы защиты периметра от беспилотников",
                 features: ["Установка систем", "Настройка", "Обслуживание", "Консультации"],
-                color: "from-indigo-500 to-blue-500"
+                color: "from-indigo-500 to-blue-500",
+                imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               },
               {
                 title: "Дополнительные услуги",
                 description: "Широкий спектр дополнительных строительных услуг",
                 features: ["Земляные работы", "Грузоперевозки", "Огнезащита", "Ремонтные работы"],
-                color: "from-yellow-500 to-orange-500"
+                color: "from-yellow-500 to-orange-500",
+                imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               }
             ].map((service, i) => (
               <motion.div
@@ -445,7 +451,14 @@ const CompanyShowcase: React.FC = () => {
                 whileHover={{ y: -10 }}
                 className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300"
               >
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 group-hover:opacity-20 transition-opacity duration-300 rounded-full -translate-y-16 translate-x-16`} />
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={service.imageUrl}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-20`}></div>
+                </div>
 
                 <div className="relative p-8">
                   <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${service.color} text-white mb-6`}>

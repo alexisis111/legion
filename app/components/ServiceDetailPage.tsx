@@ -80,7 +80,7 @@ const ServiceDetailPage: React.FC = () => {
         "Вывоз мусора",
         "Уборка территории"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://sst52.ru/images/demontazh-zdanij2.jpg"
     },
     {
       id: 2,
@@ -100,7 +100,7 @@ const ServiceDetailPage: React.FC = () => {
         "Проверка безопасности",
         "Эксплуатация и демонтаж"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1595514533160-36875055caf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://lesavyshki.ru/photos/2/Montazh-stroitelnyh-lesov.jpg"
     },
     {
       id: 3,
@@ -120,7 +120,7 @@ const ServiceDetailPage: React.FC = () => {
         "Подведение временных коммуникаций",
         "Устройство подъездных путей"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://masheka.by/uploads/posts/2024-03/podgotovka.jpg"
     },
     {
       id: 4,
@@ -140,7 +140,7 @@ const ServiceDetailPage: React.FC = () => {
         "Озеленение",
         "Монтаж элементов благоустройства"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://субз.рф/assets/template/images/STROITELSTVO/blagoustrojstvo.jpg"
     },
     {
       id: 5,
@@ -160,7 +160,7 @@ const ServiceDetailPage: React.FC = () => {
         "Контроль качества",
         "Доставка и монтаж"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://st31.stpulscen.ru/images/product/299/103/931_original.jpg"
     },
     {
       id: 6,
@@ -180,7 +180,7 @@ const ServiceDetailPage: React.FC = () => {
         "Обвязка оборудования",
         "Пусконаладочные работы"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://ngirf.ru/f/services/2017/07/_595b913aef5d33.jpg"
     },
     {
       id: 7,
@@ -200,7 +200,7 @@ const ServiceDetailPage: React.FC = () => {
         "Обустройство ограждений",
         "Сдача в эксплуатацию"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://engineering-experts.ru/upload/iblock/47b/ihhttwmxdslmwb9jzwy11u23o3z028uw.jpg"
     },
     {
       id: 8,
@@ -220,7 +220,7 @@ const ServiceDetailPage: React.FC = () => {
         "Нанесение защитного покрытия",
         "Контроль качества"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://www.kzit.ru/images/antikorrozionnaya-zashchita-metallokonstrukcij.jpg"
     },
     {
       id: 9,
@@ -240,7 +240,7 @@ const ServiceDetailPage: React.FC = () => {
         "Затирка швов",
         "Финальная уборка"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1600585152846-ec61c16b0d2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://simterem.ru/wp-content/uploads/2025/03/otdelochnye-raboty-pod-klyuch-1.jpg"
     },
     {
       id: 10,
@@ -260,7 +260,7 @@ const ServiceDetailPage: React.FC = () => {
         "Контроль геометрии",
         "Завершающая отделка"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://gabioni.ru/Gabiones1-750x250.jpg"
     },
     {
       id: 11,
@@ -280,7 +280,7 @@ const ServiceDetailPage: React.FC = () => {
         "Установка опалубки",
         "Проверка перед бетонированием"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://psk-monolit.com/images/steelworkers-1029665-1280.jpg"
     },
     {
       id: 12,
@@ -300,7 +300,7 @@ const ServiceDetailPage: React.FC = () => {
         "Монтаж опалубки и арматуры",
         "Бетонирование и уход за бетоном"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://lh4.googleusercontent.com/proxy/RFwPbhGjbt5GETwWR11rA6FBfBahPENl0xk27I1eBs83JpG9A2iyzSWDgo8DnGIMEySSudr1mUy0J1O4jsRHF2Dx_DnaRUE_jh2hypNv"
     },
     {
       id: 13,
@@ -320,7 +320,7 @@ const ServiceDetailPage: React.FC = () => {
         "Монтаж конструкций",
         "Крепление и выверка"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://mostopora.ru/site/images/1/montazh-zhelezobetonnyh-balok.jpg"
     },
     {
       id: 14,
@@ -340,7 +340,7 @@ const ServiceDetailPage: React.FC = () => {
         "Монтаж теплоизоляции",
         "Обшивка защитным покрытием"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://paritet-energo.ru/picture/slider-2017-12.png"
     },
     {
       id: 15,
@@ -360,7 +360,7 @@ const ServiceDetailPage: React.FC = () => {
         "Монтаж теплоизоляции",
         "Обшивка защитным покрытием"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://millennium-official.ru/upload/iblock/00e/vh6mpzi5w06qa15h8r0fp78hz750jn7m.jpg"
     },
     {
       id: 16,
@@ -380,7 +380,7 @@ const ServiceDetailPage: React.FC = () => {
         "Вывоз грунта",
         "Выравнивание территории"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://arenda-ekskovatora-pogruzchika24.ru/wp-content/uploads/2018/03/razrabotka-kotlovana-1024x630.jpg"
     },
     {
       id: 17,
@@ -400,7 +400,7 @@ const ServiceDetailPage: React.FC = () => {
         "Обшивка сэндвич-панелями",
         "Оборудование внутрь"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://iconstr.ru/assets/components/webpgenerator/cache/images/uslugi/stroitelistvo-angarov-pw.webp"
     },
     {
       id: 18,
@@ -420,7 +420,7 @@ const ServiceDetailPage: React.FC = () => {
         "Транспортировка",
         "Разгрузка"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrMRxioeNzhHfPhhgv_epmzWKq4uCPr4zKbA&s"
     },
     {
       id: 19,
@@ -440,7 +440,7 @@ const ServiceDetailPage: React.FC = () => {
         "Контроль толщины покрытия",
         "Сдача актов скрытых работ"
       ],
-      imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      imageUrl: "https://promalp-ural.ru/wp-content/uploads/2019/12/ognezashita-metallicheskih-konstrykciy.jpg"
     }
   ];
 
@@ -483,7 +483,7 @@ const ServiceDetailPage: React.FC = () => {
         >
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-20" 
-                 style={{ backgroundImage: `url(${service.imageUrl || 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'})` }} />
+                 style={{ backgroundImage: `url(${service.imageUrl})` }} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
