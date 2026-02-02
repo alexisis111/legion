@@ -410,7 +410,15 @@ export function Welcome() {
                         </ul>
 
                         <Link
-                            to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                            to={
+                              service.title === "Подготовительные работы" ? "/services?category=Подготовительные работы" :
+                              service.title === "Металлоконструкции" ? "/services?category=Монтаж металлических конструкций" :
+                              service.title === "Теплоизоляция" ? "/services?category=Теплоизоляционные работы" :
+                              service.title === "Защита от БПЛА" ? "/services?category=Дополнительные услуги" :
+                              service.title === "Дополнительные услуги" ? "/services?category=Дополнительные услуги" :
+                              service.title === "Строительство зданий" ? "/services?category=Устройство монолитных и сборных бетонных и железобетонных конструкций" :
+                              "/services"
+                            }
                             className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group/link"
                         >
                           <span>Подробнее</span>

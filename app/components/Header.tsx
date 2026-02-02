@@ -21,7 +21,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/Logo-1.png" alt="Logo" className="w-auto h-12 lg:h-20 object-contain" />
+            <img src="/Logo-1.png" alt="Logo" className="w-auto h-14 object-contain" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -135,6 +135,9 @@ const Header: React.FC = () => {
                 { to: "/", label: "Главная", icon: Star },
                 { to: "/company", label: "О компании", icon: Building2 },
                 { to: "/services", label: "Услуги", icon: Briefcase },
+                { to: "/services?category=Подготовительные работы", label: "Подготовительные работы", icon: Briefcase },
+                { to: "/services?category=Монтаж металлических конструкций", label: "Монтаж конструкций", icon: Briefcase },
+                { to: "/services?category=Работы по устройству каменных конструкций и отделочные работы", label: "Отделочные работы", icon: Briefcase },
                 { to: "/portfolio", label: "Портфолио", icon: Briefcase },
                 { to: "/contacts", label: "Контакты", icon: MapPin },
                 { to: "/vacancies", label: "Вакансии", icon: Users },

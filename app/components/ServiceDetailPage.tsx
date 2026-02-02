@@ -536,7 +536,7 @@ const ServiceDetailPage: React.FC = () => {
       <div className="container mx-auto px-4 py-6 z-20 relative">
         <Link
           to="/services"
-          className={`inline-flex items-center gap-2 text-lg font-medium ${
+          className={`inline-flex items-center gap-2 text-sm font-medium ${
             theme === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'
           }`}
         >

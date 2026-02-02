@@ -15,9 +15,13 @@ interface Service {
 
 const ServicesCatalog: React.FC = () => {
   const { theme } = useTheme();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [scrollY, setScrollY] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>(() => {
+    // Получаем категорию из URL параметров
+    const urlCategory = searchParams.get('category');
+    return urlCategory || 'all';
+  });
   const [timeLeft, setTimeLeft] = useState({
     hours: 0,
     minutes: 0,
@@ -345,13 +349,40 @@ const ServicesCatalog: React.FC = () => {
     }
   ];
 
-  // Получаем уникальные категории
-  const categories = ['all', ...Array.from(new Set(services.map(service => service.category)))];
+  // Определяем основные категории для фильтрации
+  const categories = [
+    'all',
+    'Подготовительные работы',
+    'Монтаж металлических конструкций',
+    'Работы по устройству каменных конструкций и отделочные работы',
+    'Устройство монолитных и сборных бетонных и железобетонных конструкций',
+    'Теплоизоляционные работы',
+    'Дополнительные услуги'
+  ];
 
   // Фильтруем услуги по выбранной категории
-  const filteredServices = selectedCategory === 'all' 
-    ? services 
-    : services.filter(service => service.category === selectedCategory);
+  const filteredServices = selectedCategory === 'all'
+    ? services
+    : services.filter(service => {
+        // Сопоставляем категории с реальными категориями из данных
+        const categoryMap: Record<string, string[]> = {
+          'Подготовительные работы': ['Подготовительные работы'],
+          'Монтаж конструкций': ['Монтаж металлических конструкций'],
+          'Отделочные работы': ['Работы по устройству каменных конструкций и отделочные работы'],
+          'Бетонные работы': ['Устройство монолитных и сборных бетонных и железобетонных конструкций'],
+          'Теплоизоляция': ['Теплоизоляционные работы'],
+          'Дополнительные услуги': ['Дополнительные услуги']
+        };
+
+        // Если категория есть в карте, ищем услуги с соответствующей реальной категорией
+        if (categoryMap[selectedCategory]) {
+          return service.category === categoryMap[selectedCategory][0];
+        }
+
+        // Для общих названий, ищем частичное совпадение
+        return service.category.toLowerCase().includes(selectedCategory.toLowerCase()) ||
+               service.categoryEn?.toLowerCase().includes(selectedCategory.toLowerCase());
+      });
 
   const handleOrderService = (serviceName: string) => {
     // Здесь будет логика для создания заявки на услугу
@@ -571,7 +602,13 @@ const ServicesCatalog: React.FC = () => {
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
-                {category === 'all' ? 'Все услуги' : category}
+                {category === 'all' ? 'Все услуги' :
+                 category === 'Подготовительные работы' ? 'Подготовительные работы' :
+                 category === 'Монтаж металлических конструкций' ? 'Монтаж конструкций' :
+                 category === 'Работы по устройству каменных конструкций и отделочные работы' ? 'Отделочные работы' :
+                 category === 'Устройство монолитных и сборных бетонных и железобетонных конструкций' ? 'Бетонные работы' :
+                 category === 'Теплоизоляционные работы' ? 'Теплоизоляция' :
+                 category === 'Дополнительные услуги' ? 'Дополнительные услуги' : category}
               </button>
             ))}
           </div>

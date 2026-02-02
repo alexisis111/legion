@@ -483,10 +483,18 @@ const CompanyShowcase: React.FC = () => {
                   </ul>
 
                   <a
-                    href="#contact"
+                    href={
+                      service.title === "Подготовительные работы" ? "/services?category=Подготовительные работы" :
+                      service.title === "Металлоконструкции" ? "/services?category=Монтаж металлических конструкций" :
+                      service.title === "Теплоизоляция" ? "/services?category=Теплоизоляционные работы" :
+                      service.title === "Защита от БПЛА" ? "/services?category=Дополнительные услуги" :
+                      service.title === "Дополнительные услуги" ? "/services?category=Дополнительные услуги" :
+                      service.title === "Строительство зданий" ? "/services?category=Устройство монолитных и сборных бетонных и железобетонных конструкций" :
+                      "/services"
+                    }
                     className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group/link"
                   >
-                    <span>Обсудить проект</span>
+                    <span>Подробнее</span>
                     <HardHat className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </a>
                 </div>
@@ -587,7 +595,7 @@ const CompanyShowcase: React.FC = () => {
               </a>
 
               <a
-                href="#services"
+                href="/services"
                 className="group inline-flex items-center justify-center gap-3 bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white hover:bg-white/10 transition-all duration-300"
               >
                 <span>Наши услуги</span>
