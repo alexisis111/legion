@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fixxx" />
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix forms in TG" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -300,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770098495044</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fix forms in TG">
+      <option name="closed" value="true" />
+      <created>1770098626810</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1770098626810</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +323,7 @@
     <MESSAGE value="sales" />
     <MESSAGE value="fix closed" />
     <MESSAGE value="fixxx" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixxx" />
+    <MESSAGE value="fix forms in TG" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix forms in TG" />
   </component>
 </project>

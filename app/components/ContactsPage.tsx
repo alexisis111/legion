@@ -511,13 +511,37 @@ const ContactForm: React.FC<{ theme: string }> = ({ theme }) => {
           consentCheckbox.checked = false;
         }
       } else {
+        // More detailed error reporting
+        let errorMessage = 'Ошибка при отправке сообщения';
+
+        if (fetcher.data.error) {
+          errorMessage = fetcher.data.error;
+
+          // If it's an object, try to get more specific error details
+          if (typeof fetcher.data.error === 'object' && fetcher.data.error !== null) {
+            if (fetcher.data.error.message) {
+              errorMessage = fetcher.data.error.message;
+            } else if (fetcher.data.error.error) {
+              errorMessage = fetcher.data.error.error;
+            }
+          }
+        } else if (fetcher.data.message) {
+          errorMessage = fetcher.data.message;
+        }
+
         setSubmitStatus({
           type: 'error',
-          message: fetcher.data.error || 'Ошибка при отправке сообщения'
+          message: errorMessage
         });
       }
+    } else if (fetcher.state === 'idle' && fetcher.data === undefined && fetcher.formMethod === 'POST') {
+      // Handle case where there's no response data but form was submitted
+      setSubmitStatus({
+        type: 'error',
+        message: 'Ошибка соединения. Пожалуйста, проверьте подключение к интернету.'
+      });
     }
-  }, [fetcher.state, fetcher.data]);
+  }, [fetcher.state, fetcher.data, fetcher.formMethod]);
 
   return (
     <div className={`rounded-3xl overflow-hidden shadow-2xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
