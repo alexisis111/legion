@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import OptimizedImage from './OptimizedImage';
 
 interface Slide {
   imageUrl: string;
@@ -65,10 +66,11 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ slides }) => {
               index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           >
-            <img
+            <OptimizedImage
               src={slide.imageUrl}
               alt={slide.alt}
               className="w-full h-full object-cover"
+              priority={index === currentIndex} // Only load the active slide eagerly
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-center justify-center">
               <div className="text-center p-4 max-w-4xl">

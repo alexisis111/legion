@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 import { Menu, X, Sun, Moon, Star, Briefcase, Building2, Users, MapPin, Shield, Gift } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -21,7 +22,14 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/Logo-1.png" alt="Logo" className="w-auto h-14 object-contain" />
+            <div className="w-auto h-16 flex items-center justify-center">
+              <OptimizedImage
+                src="/Logo-1.png"
+                alt="Logo"
+                className="w-full h-full object-contain"
+                priority={true} // Logo should load immediately
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

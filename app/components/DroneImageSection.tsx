@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import OptimizedImage from './OptimizedImage';
 
 interface DroneImageSectionProps {
   title: string;
@@ -28,27 +29,12 @@ const DroneImageSection: React.FC<DroneImageSectionProps> = ({
           aspect-video bg-cover bg-center flex items-center justify-center
           ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'}
         `}>
-          <img
+          <OptimizedImage
             src={imageUrl}
             alt={altText}
             className="w-full h-full object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.onerror = null;
-              target.style.display = 'none';
-              const parent = target.parentElement;
-              if (parent) {
-                parent.insertAdjacentHTML('beforeend', '<div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 m-auto flex items-center justify-center">IMG</div>');
-              }
-            }}
-            onLoad={(e) => {
-              const target = e.target as HTMLImageElement;
-              const parent = target.parentElement;
-              if (parent) {
-                // Убедимся, что изображение отображается
-                target.style.display = 'block';
-              }
-            }}
+            width={800} // Assuming a standard width for these images
+            height={450} // Assuming a 16:9 aspect ratio
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">

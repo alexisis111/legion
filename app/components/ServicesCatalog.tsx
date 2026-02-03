@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, Percent } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router';
+import OptimizedImage from './OptimizedImage';
+import LazyLoad from './LazyLoad';
 
 interface Service {
   id: number;
@@ -616,123 +618,139 @@ const ServicesCatalog: React.FC = () => {
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service, index) => (
-              <motion.div
+              <LazyLoad
                 key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  {service.imageUrl ? (
-                    <img
-                      src={service.imageUrl}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
-                      <Building2 className="w-12 h-12 text-white opacity-50" />
+                fallback={
+                  <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl transition-all duration-300 animate-pulse">
+                    <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
+                    <div className="p-6">
+                      <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
+                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2"></div>
+                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6 mb-4"></div>
+                      <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
                     </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      {service.category}
-                    </span>
                   </div>
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {service.description}
-                  </p>
-
-                  <div className="mb-4">
-                    {service.price && (
-                      <div className={`rounded-lg p-3 ${
-                        searchParams.get('discount') === 'true' && [1, 2, 3].includes(service.id)
-                          ? 'bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-sm'
-                          : 'bg-white/10 backdrop-blur-sm'
-                      }`}>
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-gray-500 dark:text-gray-400">Цена:</span>
-                          <span className="font-medium text-gray-900 dark:text-white">{service.price}</span>
-                        </div>
-
-                        {searchParams.get('discount') === 'true' && [1, 2, 3].includes(service.id) && (
-                          <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
-                            <div className="flex justify-between items-center">
-                              <span className="text-sm text-green-600 dark:text-green-400">Со скидкой:</span>
-                              <span className="font-bold text-green-600 dark:text-green-400">
-                                {calculateDiscountedPrice(service.price)}
-                              </span>
-                            </div>
-                            <div className="mt-1 text-xs text-yellow-600 dark:text-yellow-400 flex items-center">
-                              <Percent className="w-3 h-3 mr-1" />
-                              Специальное предложение
-                            </div>
-                            <div className="mt-2 flex justify-center gap-1">
-                              <div className="text-center">
-                                <div className="text-sm font-bold text-white">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                                <div className="text-xs text-gray-300">Ч</div>
-                              </div>
-                              <div className="text-center">
-                                <div className="text-sm font-bold text-white">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                                <div className="text-xs text-gray-300">М</div>
-                              </div>
-                              <div className="text-center">
-                                <div className="text-sm font-bold text-white">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-                                <div className="text-xs text-gray-300">С</div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
+                }
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -10 }}
+                  className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    {service.imageUrl ? (
+                      <OptimizedImage
+                        src={service.imageUrl}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        width={400}
+                        height={300}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
+                        <Building2 className="w-12 h-12 text-white opacity-50" />
                       </div>
                     )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        {service.category}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
-                      Включает:
-                    </h4>
-                    <ul className="space-y-1">
-                      {service.details.slice(0, 3).map((detail, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
-                          <span className="text-gray-600 dark:text-gray-400 text-sm">{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                      {service.title}
+                    </h3>
 
-                  <div className="flex gap-3">
-                    <Link
-                      to={
-                        [1, 2, 3].includes(service.id)
-                          ? `/service/${service.id}?discount=true&serviceId=${service.id}`
-                          : `/service/${service.id}`
-                      }
-                      className="flex-1 text-center py-3 px-4 rounded-lg font-medium transition-all bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20"
-                    >
-                      Подробнее
-                    </Link>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      {service.description}
+                    </p>
 
-                    <button
-                      onClick={() => handleOrderService(service.title)}
-                      className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
-                    >
-                      Заказать
-                    </button>
+                    <div className="mb-4">
+                      {service.price && (
+                        <div className={`rounded-lg p-3 ${
+                          searchParams.get('discount') === 'true' && [1, 2, 3].includes(service.id)
+                            ? 'bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-sm'
+                            : 'bg-white/10 backdrop-blur-sm'
+                        }`}>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-gray-500 dark:text-gray-400">Цена:</span>
+                            <span className="font-medium text-gray-900 dark:text-white">{service.price}</span>
+                          </div>
+
+                          {searchParams.get('discount') === 'true' && [1, 2, 3].includes(service.id) && (
+                            <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm text-green-600 dark:text-green-400">Со скидкой:</span>
+                                <span className="font-bold text-green-600 dark:text-green-400">
+                                  {calculateDiscountedPrice(service.price)}
+                                </span>
+                              </div>
+                              <div className="mt-1 text-xs text-yellow-600 dark:text-yellow-400 flex items-center">
+                                <Percent className="w-3 h-3 mr-1" />
+                                Специальное предложение
+                              </div>
+                              <div className="mt-2 flex justify-center gap-1">
+                                <div className="text-center">
+                                  <div className="text-sm font-bold text-white">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                                  <div className="text-xs text-gray-300">Ч</div>
+                                </div>
+                                <div className="text-center">
+                                  <div className="text-sm font-bold text-white">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                                  <div className="text-xs text-gray-300">М</div>
+                                </div>
+                                <div className="text-center">
+                                  <div className="text-sm font-bold text-white">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                                  <div className="text-xs text-gray-300">С</div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
+                        Включает:
+                      </h4>
+                      <ul className="space-y-1">
+                        {service.details.slice(0, 3).map((detail, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                            <span className="text-gray-600 dark:text-gray-400 text-sm">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex gap-3">
+                      <Link
+                        to={
+                          [1, 2, 3].includes(service.id)
+                            ? `/service/${service.id}?discount=true&serviceId=${service.id}`
+                            : `/service/${service.id}`
+                        }
+                        className="flex-1 text-center py-3 px-4 rounded-lg font-medium transition-all bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20"
+                      >
+                        Подробнее
+                      </Link>
+
+                      <button
+                        onClick={() => handleOrderService(service.title)}
+                        className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
+                      >
+                        Заказать
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </LazyLoad>
             ))}
           </div>
         </div>
