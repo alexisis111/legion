@@ -162,7 +162,7 @@ const ContactsPage: React.FC = () => {
                 </a>
 
                 <a
-                  href="mailto:info@legion78.ru"
+                  href="mailto:l-legion@bk.ru"
                   className="group inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300"
                 >
                   <Mail className="w-5 h-5" />
@@ -183,34 +183,39 @@ const ContactsPage: React.FC = () => {
                   icon: <Phone className="w-6 h-6" />,
                   title: "Телефон/факс",
                   description: "8 (81378) 40-235",
-                  color: "from-blue-500 to-cyan-500"
+                  color: "from-blue-500 to-cyan-500",
+                  link: "tel:+78137840235"
                 },
                 {
                   icon: <Phone className="w-6 h-6" />,
                   title: "Генеральный директор",
                   description: "+7 931 247-08-88",
-                  color: "from-purple-500 to-pink-500"
+                  color: "from-purple-500 to-pink-500",
+                  link: "tel:+79312470888"
                 },
                 {
                   icon: <Phone className="w-6 h-6" />,
                   title: "Отдел снабжения",
                   description: "+7 921 340 36 16",
-                  color: "from-orange-500 to-red-500"
+                  color: "from-orange-500 to-red-500",
+                  link: "tel:+79213403616"
                 },
                 {
                   icon: <Mail className="w-6 h-6" />,
                   title: "Email",
-                  description: "info@legion78.ru",
-                  color: "from-green-500 to-emerald-500"
+                  description: "l-legion@bk.ru",
+                  color: "from-green-500 to-emerald-500",
+                  link: "mailto:l-legion@bk.ru"
                 }
               ].map((contact, i) => (
-                <motion.div
+                <motion.a
                   key={i}
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 + i * 0.1 }}
                   whileHover={{ x: -10 }}
-                  className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                  href={contact.link}
+                  className="group block bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex items-start gap-4">
                     <div className={`p-3 rounded-xl bg-gradient-to-br ${contact.color}`}>
@@ -221,7 +226,7 @@ const ContactsPage: React.FC = () => {
                       <p className="text-gray-300">{contact.description}</p>
                     </div>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
             </motion.div>
           </div>
@@ -251,37 +256,50 @@ const ContactsPage: React.FC = () => {
                 icon: <MapPin className="w-8 h-8" />,
                 title: "Адрес",
                 description: "188992, Ленинградская обл., Выборгский район, г. Светогорск, ул. Максима Горького, д. 7",
-                color: "from-blue-500 to-cyan-500"
+                color: "from-blue-500 to-cyan-500",
+                link: null
               },
               {
                 icon: <Phone className="w-8 h-8" />,
                 title: "Телефон/факс",
                 description: "8 (81378) 40-235",
-                color: "from-purple-500 to-pink-500"
+                color: "from-purple-500 to-pink-500",
+                link: "tel:+78137840235"
               },
               {
                 icon: <Phone className="w-8 h-8" />,
                 title: "Генеральный директор",
                 description: "+7 931 247-08-88",
-                color: "from-orange-500 to-red-500"
+                color: "from-orange-500 to-red-500",
+                link: "tel:+79312470888"
               },
               {
                 icon: <Phone className="w-8 h-8" />,
                 title: "Отдел снабжения",
                 description: "+7 921 340 36 16",
-                color: "from-green-500 to-emerald-500"
+                color: "from-green-500 to-emerald-500",
+                link: "tel:+79213403616"
               },
               {
                 icon: <Users className="w-8 h-8" />,
                 title: "Отдел кадров",
                 description: "+7 921 591-65-06",
-                color: "from-indigo-500 to-blue-500"
+                color: "from-indigo-500 to-blue-500",
+                link: "tel:+79215916506"
               },
               {
                 icon: <Mail className="w-8 h-8" />,
                 title: "Email",
-                description: "info@legion78.ru",
-                color: "from-yellow-500 to-orange-500"
+                description: "l-legion@bk.ru",
+                color: "from-yellow-500 to-orange-500",
+                link: "mailto:l-legion@bk.ru"
+              },
+              {
+                icon: <Shield className="w-8 h-8" />,
+                title: "Реквизиты",
+                description: "ИНН 7802808155\nКПП 470401001\nОГРН 1127847628820",
+                color: "from-indigo-500 to-purple-500",
+                link: null
               }
             ].map((contact, i) => (
               <motion.div
@@ -293,17 +311,34 @@ const ContactsPage: React.FC = () => {
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-6">
-                    {contact.icon}
+                {contact.link ? (
+                  <a
+                    href={contact.link}
+                    className="relative block bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-6">
+                      {contact.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                      {contact.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 whitespace-pre-line">
+                      {contact.description}
+                    </p>
+                  </a>
+                ) : (
+                  <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-6">
+                      {contact.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                      {contact.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 whitespace-pre-line">
+                      {contact.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                    {contact.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {contact.description}
-                  </p>
-                </div>
+                )}
               </motion.div>
             ))}
           </div>
@@ -398,7 +433,7 @@ const ContactsPage: React.FC = () => {
               </a>
 
               <a
-                href="mailto:info@legion78.ru"
+                href="mailto:l-legion@bk.ru"
                 className="group inline-flex items-center justify-center gap-3 bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white hover:bg-white/10 transition-all duration-300"
               >
                 <Mail className="w-5 h-5" />
