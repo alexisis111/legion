@@ -35,7 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>ЛЕГИОН, строительная компания</title>
-        <link rel="icon" href="/logo.png" sizes="any" />
+        <link rel="icon" href="/Logo-1.png" sizes="any" />
         <Meta />
         <Links />
       </head>
