@@ -11,6 +11,5 @@ export default [
   route("/proposal", "routes/proposal.tsx"),
   route("/drone-defense", "routes/drone-defense.tsx"),
   route("/privacy", "routes/privacy.tsx"),
-  route("/terms", "routes/terms.tsx"),
-  route("/api/telegram-webhook", "routes/api.telegram-webhook.ts")
+  route("/terms", "routes/terms.tsx")
 ] satisfies RouteConfig;

@@ -470,7 +470,7 @@ const ContactForm: React.FC<{ theme: string }> = ({ theme }) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Check if consent checkbox is checked
@@ -483,14 +483,48 @@ const ContactForm: React.FC<{ theme: string }> = ({ theme }) => {
       return;
     }
 
-    // Convert form data to FormData object to ensure proper transmission
-    const formDataToSend = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      formDataToSend.append(key, value);
-    });
+    try {
+      // Submit form directly to Netlify function
+      const response = await fetch('/.netlify/functions/telegram-webhook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Submit form using fetcher
-    fetcher.submit(formDataToSend, { method: 'post', action: '/api/telegram-webhook' });
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: result.message || 'Сообщение успешно отправлено!'
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+
+        const consentCheckbox = document.getElementById('consent') as HTMLInputElement;
+        if (consentCheckbox) {
+          consentCheckbox.checked = false;
+        }
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Ошибка при отправке сообщения'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Ошибка соединения. Пожалуйста, проверьте подключение к интернету.'
+      });
+    }
   };
 
   // Handle submission status based on fetcher state
