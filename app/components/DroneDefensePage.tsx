@@ -235,10 +235,10 @@ const DroneDefensePage: React.FC = () => {
       <section className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+              initial={{opacity: 0, y: 50}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Демонстрация работы системы
@@ -249,19 +249,34 @@ const DroneDefensePage: React.FC = () => {
           </motion.div>
 
           <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
-            <ZOKVisualization enableControls={false} />
+            <ZOKVisualization enableControls={false}/>
             <button
-              onClick={() => setIsModalOpen(true)}
-              className="absolute top-4 right-4 z-10 p-3 rounded-full bg-white/80 backdrop-blur-sm text-gray-800 hover:bg-white transition-all shadow-lg"
-              aria-label="Открыть в полноэкранном режиме"
+                onClick={() => setIsModalOpen(true)}
+                className="absolute top-4 right-4 z-10 p-3 rounded-full bg-white/80 backdrop-blur-sm text-gray-800 hover:bg-white transition-all shadow-lg"
+                aria-label="Открыть в полноэкранном режиме"
             >
-              <Maximize2 className="w-5 h-5" />
+              <Maximize2 className="w-5 h-5"/>
             </button>
 
             <FullscreenModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-              <ZOKVisualization enableControls={true} />
+              <ZOKVisualization enableControls={true}/>
             </FullscreenModal>
           </div>
+
+          <motion.div
+              initial={{opacity: 0, y: 50}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              className="text-center pt-16"
+          >
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto flex items-center justify-center gap-2">
+              Нажмите на иконку
+              <span className="inline-flex items-center justify-center p-1 rounded border border-gray-300 dark:border-gray-600">
+                <Maximize2 className="w-5 h-5"/>
+              </span>
+              чтобы посмотреть объект в 3D
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -269,16 +284,16 @@ const DroneDefensePage: React.FC = () => {
       <section className="py-24">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+              initial={{opacity: 0, y: 50}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Особенности системы
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Современные технологии для обеспечения безопасности вашего объекта
+            Современные технологии для обеспечения безопасности вашего объекта
             </p>
           </motion.div>
 
