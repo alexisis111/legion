@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix send message русское уведомление">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/DroneDefensePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/DroneDefensePage.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -392,7 +389,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770114306337</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="fix">
+      <option name="closed" value="true" />
+      <created>1770116215750</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1770116215750</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,7 +408,6 @@
     <MESSAGE value="tg" />
     <MESSAGE value="upgrade" />
     <MESSAGE value="img services" />
-    <MESSAGE value="fix" />
     <MESSAGE value="sales" />
     <MESSAGE value="fix closed" />
     <MESSAGE value="fixxx" />
@@ -411,6 +415,7 @@
     <MESSAGE value="fix bpla" />
     <MESSAGE value="fix OPTIMIZED logo ico" />
     <MESSAGE value="fix send message русское уведомление" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix send message русское уведомление" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
 </project>

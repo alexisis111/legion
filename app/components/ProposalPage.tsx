@@ -713,7 +713,7 @@ const ProposalPage: React.FC = () => {
                     <div className="flex gap-3">
                       <Link
                         to={`/service/${service.id}?discount=true&serviceId=${service.id}`}
-                        className="flex-1 text-center py-3 px-4 rounded-lg font-medium transition-all bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20"
+                        className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 flex items-center justify-center"
                       >
                         Подробнее
                       </Link>
@@ -721,13 +721,13 @@ const ProposalPage: React.FC = () => {
                       {!isExpired ? (
                         <Link
                           to="/contacts"
-                          className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
+                          className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 flex items-center justify-center"
                         >
                           Заказать
                         </Link>
                       ) : (
                         <button
-                          className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-gray-300 text-gray-500 cursor-not-allowed"
+                          className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-gray-300 text-gray-500 cursor-not-allowed flex items-center justify-center"
                           disabled
                         >
                           Скидка истекла
