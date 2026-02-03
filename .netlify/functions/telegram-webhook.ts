@@ -181,7 +181,7 @@ const handler: Handler = async (event, context) => {
       statusCode: 200,
       body: JSON.stringify({
         success: true,
-        message: 'Message sent to Telegram successfully',
+        message: 'Сообщение успешно отправлено в Telegram',
         messageId: telegramResponse.result?.message_id
       }),
       headers: {

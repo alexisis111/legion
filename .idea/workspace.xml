@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix bpla">
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix OPTIMIZED logo ico">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/DroneImageSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/DroneImageSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ImageSlider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ImageSlider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ServicesCatalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ServicesCatalog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.netlify/functions/telegram-webhook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.netlify/functions/telegram-webhook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netlify/functions/telegram-webhook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/netlify/functions/telegram-webhook.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -382,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770103835612</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="fix OPTIMIZED logo ico">
+      <option name="closed" value="true" />
+      <created>1770113883134</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1770113883134</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,6 +402,7 @@
     <MESSAGE value="fixxx" />
     <MESSAGE value="fix forms in TG" />
     <MESSAGE value="fix bpla" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bpla" />
+    <MESSAGE value="fix OPTIMIZED logo ico" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix OPTIMIZED logo ico" />
   </component>
 </project>

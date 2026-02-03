@@ -204,7 +204,7 @@ ${body.message}
       headers,
       body: JSON.stringify({
         success: true,
-        message: 'Message sent successfully',
+        message: 'Сообщение успешно отправлено',
         messageId: responseData.result?.message_id
       }),
     };
