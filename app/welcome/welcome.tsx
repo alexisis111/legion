@@ -466,10 +466,6 @@ export function Welcome() {
                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
-
-                <p className="mt-8 opacity-75">
-                  Или позвоните нам: <span className="font-bold">+7 (XXX) XXX-XX-XX</span>
-                </p>
               </motion.div>
             </div>
           </section>

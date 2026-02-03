@@ -603,9 +603,6 @@ const CompanyShowcase: React.FC = () => {
               </a>
             </div>
 
-            <p className="mt-8 opacity-75">
-              Или позвоните нам: <span className="font-bold">+7 (XXX) XXX-XX-XX</span>
-            </p>
           </motion.div>
         </div>
       </section>
