@@ -4,7 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix кнопки заказать">
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix imgs">
+      <change afterPath="$PROJECT_DIR$/public/img/homesImg/about_comp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/homesImg/contacts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/homesImg/home" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/homesImg/portfolio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/homesImg/services" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/homesImg/vacancy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/img1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/img2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/img3.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/img4.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/img5.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/img6.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/img7.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/img9.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img10.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img11.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img12.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img13.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img14.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img15.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img16.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img17.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img18.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img19.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img3.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img4.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img5.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img6.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img7.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img8.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/services/img9.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/CompanyShowcase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/CompanyShowcase.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/ContactsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ContactsPage.tsx" afterDir="false" />
@@ -85,7 +118,7 @@
       <workItem from="1769246423262" duration="15669000" />
       <workItem from="1769272094565" duration="14776000" />
       <workItem from="1770059738758" duration="5343000" />
-      <workItem from="1770144957343" duration="4482000" />
+      <workItem from="1770144957343" duration="4570000" />
     </task>
     <task id="LOCAL-00001" summary="netlify">
       <option name="closed" value="true" />
@@ -415,7 +448,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770116987478</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="fix imgs">
+      <option name="closed" value="true" />
+      <created>1770150084267</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1770150084267</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,6 +476,7 @@
     <MESSAGE value="fix send message русское уведомление" />
     <MESSAGE value="fix" />
     <MESSAGE value="fix кнопки заказать" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix кнопки заказать" />
+    <MESSAGE value="fix imgs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix imgs" />
   </component>
 </project>

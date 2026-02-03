@@ -13,6 +13,8 @@ interface Service {
   category: string;
   details: string[];
   imageUrl?: string;
+  price?: string;
+  categoryEn?: string;
 }
 
 const ServicesCatalog: React.FC = () => {
