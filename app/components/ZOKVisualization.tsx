@@ -818,7 +818,7 @@ const ZOKVisualization = ({ enableControls = true }) => {
 
     return (
         <div
-            className="w-full h-[500px] rounded-xl overflow-hidden bg-gray-50"
+            className="w-full h-[500px] rounded-xl overflow-hidden bg-gray-50 relative"
             style={{
                 // This ensures that when controls are disabled, touch events can scroll the page
                 touchAction: enableControls ? 'none' : 'auto'

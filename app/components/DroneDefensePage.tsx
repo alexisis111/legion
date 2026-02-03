@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, Radio, Eye, AlertTriangle, Lock } from 'lucide-react';
+import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, Radio, Eye, AlertTriangle, Lock, Maximize2 } from 'lucide-react';
 import { Link } from 'react-router';
 import ZOKVisualization from '../components/ZOKVisualization';
+import FullscreenModal from './FullscreenModal';
 
 const DroneDefensePage: React.FC = () => {
   const { theme } = useTheme();
   const [scrollY, setScrollY] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -124,7 +126,7 @@ const DroneDefensePage: React.FC = () => {
                 className="text-xl text-gray-300 max-w-2xl"
               >
                 Современные системы защиты периметра от беспилотных летательных аппаратов. 
-                Обнаружение, идентификация и нейтрализация угроз в автоматическом режиме.
+                Многоуровневая система защиты. Надежность конструкции. Гарантия качества.
               </motion.p>
 
               {/* Stats */}
@@ -135,9 +137,9 @@ const DroneDefensePage: React.FC = () => {
                 className="grid grid-cols-2 md:grid-cols-4 gap-4"
               >
                 {[
-                  { value: "99.9%", label: "Точность" },
-                  { value: "< 3с", label: "Обнаружение" },
-                  { value: "24/7", label: "Мониторинг" },
+                  { value: "99.9%", label: "Безопасность" },
+                  { value: "3", label: "Уровня защиты" },
+                  { value: "10 лет", label: "Гарантия" },
                   { value: "100%", label: "Покрытие" },
                 ].map((stat, i) => (
                   <div key={i} className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
@@ -188,20 +190,20 @@ const DroneDefensePage: React.FC = () => {
                 },
                 {
                   icon: <Eye className="w-6 h-6" />,
-                  title: "Видеонаблюдение",
-                  description: "Оптические системы слежения",
+                  title: "Современный подход",
+                  description: "Качественные материалы",
                   color: "from-purple-500 to-pink-500"
                 },
                 {
                   icon: <AlertTriangle className="w-6 h-6" />,
-                  title: "Обнаружение угроз",
-                  description: "Идентификация потенциально опасных объектов",
+                  title: "Гарантия качества",
+                  description: "Гарантируем долговечность",
                   color: "from-orange-500 to-red-500"
                 },
                 {
                   icon: <Lock className="w-6 h-6" />,
-                  title: "Нейтрализация",
-                  description: "Подавление сигналов управления",
+                  title: "Закрывающие документы",
+                  description: "Вся сопутствующая документация",
                   color: "from-green-500 to-emerald-500"
                 }
               ].map((feature, i) => (
@@ -246,8 +248,19 @@ const DroneDefensePage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl">
-            <ZOKVisualization enableControls={true} />
+          <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
+            <ZOKVisualization enableControls={false} />
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="absolute top-4 right-4 z-10 p-3 rounded-full bg-white/80 backdrop-blur-sm text-gray-800 hover:bg-white transition-all shadow-lg"
+              aria-label="Открыть в полноэкранном режиме"
+            >
+              <Maximize2 className="w-5 h-5" />
+            </button>
+
+            <FullscreenModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+              <ZOKVisualization enableControls={true} />
+            </FullscreenModal>
           </div>
         </div>
       </section>
@@ -278,18 +291,18 @@ const DroneDefensePage: React.FC = () => {
               },
               {
                 icon: <Target className="w-8 h-8" />,
-                title: "Точное обнаружение",
-                description: "Высокоточные радары и оптические системы для обнаружения малоразмерных объектов"
+                title: "Трехуровневая защита",
+                description: "Мы используем несколько уровней защиты для максимальной безопасности"
               },
               {
                 icon: <Zap className="w-8 h-8" />,
-                title: "Быстрое реагирование",
-                description: "Автоматическое обнаружение и нейтрализация угроз менее чем за 3 секунды"
+                title: "Быстрое возведение",
+                description: "Работаем быстро и качественно"
               },
               {
                 icon: <Clock className="w-8 h-8" />,
-                title: "Круглосуточная работа",
-                description: "Система работает 24/7 без перерывов и выходных"
+                title: "гарантия качества",
+                description: "Надежное качество конструкции гарантирует долговечность"
               },
               {
                 icon: <Award className="w-8 h-8" />,
@@ -298,8 +311,8 @@ const DroneDefensePage: React.FC = () => {
               },
               {
                 icon: <Users className="w-8 h-8" />,
-                title: "Поддержка специалистов",
-                description: "Круглосуточная техническая поддержка и обучение персонала"
+                title: "Наша поддержка",
+                description: "Всегда на связи и готовы помочь в любой ситуации"
               }
             ].map((feature, i) => (
               <motion.div
@@ -351,25 +364,25 @@ const DroneDefensePage: React.FC = () => {
                 icon: <Building2 className="w-8 h-8" />,
                 title: "Промышленные объекты",
                 description: "Защита производственных площадок и складов",
-                imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                imageUrl: "https://thumbs.dreamstime.com/b/%D0%BF%D1%80%D0%BE%D0%BC%D1%8B%D1%88%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-%D0%BD%D0%B5%D1%84%D1%82%D1%8F%D0%BD%D0%BE%D0%B9-%D0%BF%D1%80%D0%BE%D0%BC%D1%8B%D1%88%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D1%82%D0%B0%D0%BD%D0%BA%D0%B8-%D1%82%D1%80%D1%83%D0%B1%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BE%D0%B2-201992006.jpg"
               },
               {
                 icon: <Users className="w-8 h-8" />,
                 title: "Государственные учреждения",
                 description: "Объекты с особым режимом безопасности",
-                imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                imageUrl: "https://1sn.ru/storage/posts/138736.jpeg"
               },
               {
                 icon: <Shield className="w-8 h-8" />,
-                title: "Военные базы",
+                title: "Частный бизнес",
                 description: "Объекты с ограниченным доступом",
-                imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                imageUrl: "https://bzplan.ru/wp-content/uploads/2016/06/Biznes-plan-mini-zavoda-po-proizvodstvu-tsementa.jpg"
               },
               {
                 icon: <Target className="w-8 h-8" />,
                 title: "Критическая инфраструктура",
                 description: "Энергетические и транспортные объекты",
-                imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                imageUrl: "https://storge-bk.ru/wp-content/uploads/2020/12/transformatori.jpg"
               }
             ].map((application, i) => (
               <motion.div
