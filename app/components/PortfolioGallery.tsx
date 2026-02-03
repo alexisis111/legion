@@ -66,7 +66,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Северо-Запад России",
       year: "2022",
       category: "construction",
-      imageUrl: "https://static.tildacdn.com/tild3630-3537-4932-a366-646263306263/galereya_nasosy_07-2.jpg"
+      imageUrl: "/img/portfolio/img1.jpeg"
     },
     {
       id: 2,
@@ -75,7 +75,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2023",
       category: "construction",
-      imageUrl: "https://svartm.ru/wp-content/uploads/2025/06/snimok-ekrana-2025-06-20-121536.png"
+      imageUrl: "/img/portfolio/img2.jpeg"
     },
     {
       id: 3,
@@ -84,7 +84,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Выборгский район",
       year: "2022",
       category: "construction",
-      imageUrl: "https://smetnoedelo.ru/upload/iblock/04d/dVtuO.jpg"
+      imageUrl: "/img/portfolio/img3.jpeg"
     },
     {
       id: 4,
@@ -93,7 +93,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2025",
       category: "maintenance",
-      imageUrl: "https://www.arkronix.ru/upload/iblock/7db/7db6689517eeeec87f80f1ae0703006e.jpg"
+      imageUrl: "/img/portfolio/img4.jpeg"
     },
     {
       id: 5,
@@ -102,7 +102,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Северо-Запад России",
       year: "2022",
       category: "construction",
-      imageUrl: "/portfolio-5.jpg"
+      imageUrl: "/img/portfolio/img5.jpeg"
     },
     {
       id: 6,
@@ -111,7 +111,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2024",
       category: "maintenance",
-      imageUrl: "/portfolio-6.jpg"
+      imageUrl: "/img/portfolio/img6.jpeg"
     },
     {
       id: 7,
@@ -120,7 +120,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2025",
       category: "maintenance",
-      imageUrl: "/portfolio-7.jpg"
+      imageUrl: "/img/portfolio/img7.jpeg"
     },
     {
       id: 8,
@@ -138,7 +138,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Выборгский район",
       year: "2024",
       category: "construction",
-      imageUrl: "/portfolio-2.jpg"
+      imageUrl: "/img/portfolio/img9.jpeg"
     }
   ];
 
@@ -157,7 +157,7 @@ const PortfolioGallery: React.FC = () => {
           style={{ y: scrollY * 0.5 }}
         >
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('https://gbistroj.ru/img/1034/gb_4.jpg')] bg-cover bg-center mix-blend-overlay opacity-20" />
+            <div className="absolute inset-0 bg-[url('/img/homesImg/portfolio')] bg-cover bg-center mix-blend-overlay opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>

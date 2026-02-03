@@ -131,7 +131,7 @@ const ServicesCatalog: React.FC = () => {
         "Удаление строительных конструкций",
         "Вывоз строительного мусора"
       ],
-      imageUrl: "https://sst52.ru/images/demontazh-zdanij2.jpg"
+      imageUrl: "/img/services/img1.jpeg"
     },
     {
       id: 2,
@@ -143,7 +143,7 @@ const ServicesCatalog: React.FC = () => {
         "Сборка внутренних лесов",
         "Безопасная эксплуатация"
       ],
-      imageUrl: "https://lesavyshki.ru/photos/2/Montazh-stroitelnyh-lesov.jpg"
+      imageUrl: "/img/services/img2.jpeg"
     },
     {
       id: 3,
@@ -155,7 +155,7 @@ const ServicesCatalog: React.FC = () => {
         "Разметка участка",
         "Подведение коммуникаций"
       ],
-      imageUrl: "https://masheka.by/uploads/posts/2024-03/podgotovka.jpg"
+      imageUrl: "/img/services/img3.jpeg"
     },
     {
       id: 4,
@@ -167,7 +167,7 @@ const ServicesCatalog: React.FC = () => {
         "Озеленение",
         "Монтаж малых архитектурных форм"
       ],
-      imageUrl: "https://субз.рф/assets/template/images/STROITELSTVO/blagoustrojstvo.jpg"
+      imageUrl: "/img/services/img4.jpeg"
     },
     {
       id: 5,
@@ -179,7 +179,7 @@ const ServicesCatalog: React.FC = () => {
         "Любая сложность",
         "Контроль качества"
       ],
-      imageUrl: "https://st31.stpulscen.ru/images/product/299/103/931_original.jpg"
+      imageUrl: "/img/services/img5.jpeg"
     },
     {
       id: 6,
@@ -191,7 +191,7 @@ const ServicesCatalog: React.FC = () => {
         "Ремонт систем",
         "Обвязка оборудования"
       ],
-      imageUrl: "https://ngirf.ru/f/services/2017/07/_595b913aef5d33.jpg"
+      imageUrl: "/img/services/img6.jpeg"
     },
     {
       id: 7,
@@ -203,7 +203,7 @@ const ServicesCatalog: React.FC = () => {
         "Монтаж конструкций",
         "Обустройство безопасного доступа"
       ],
-      imageUrl: "https://engineering-experts.ru/upload/iblock/47b/ihhttwmxdslmwb9jzwy11u23o3z028uw.jpg"
+      imageUrl: "/img/services/img7.jpeg"
     },
     {
       id: 8,
@@ -215,7 +215,7 @@ const ServicesCatalog: React.FC = () => {
         "Обработка бетона",
         "Применение современных материалов"
       ],
-      imageUrl: "https://www.kzit.ru/images/antikorrozionnaya-zashchita-metallokonstrukcij.jpg"
+      imageUrl: "/img/services/img8.jpeg"
     },
     {
       id: 9,
@@ -227,7 +227,7 @@ const ServicesCatalog: React.FC = () => {
         "Керамогранит",
         "Искусственный и натуральный камень"
       ],
-      imageUrl: "https://simterem.ru/wp-content/uploads/2025/03/otdelochnye-raboty-pod-klyuch-1.jpg"
+      imageUrl: "/img/services/img9.jpeg"
     },
     {
       id: 10,
@@ -239,7 +239,7 @@ const ServicesCatalog: React.FC = () => {
         "Устройство блочных стен",
         "Армирование конструкций"
       ],
-      imageUrl: "https://gabioni.ru/Gabiones1-750x250.jpg"
+      imageUrl: "/img/services/img10.jpeg"
     },
     {
       id: 11,
@@ -251,7 +251,7 @@ const ServicesCatalog: React.FC = () => {
         "Монтаж арматуры",
         "Контроль качества"
       ],
-      imageUrl: "https://psk-monolit.com/images/steelworkers-1029665-1280.jpg"
+      imageUrl: "/img/services/img11.jpeg"
     },
     {
       id: 12,
@@ -263,7 +263,7 @@ const ServicesCatalog: React.FC = () => {
         "Ремонт фундаментов",
         "Фундаменты под оборудование"
       ],
-      imageUrl: "https://lh4.googleusercontent.com/proxy/RFwPbhGjbt5GETwWR11rA6FBfBahPENl0xk27I1eBs83JpG9A2iyzSWDgo8DnGIMEySSudr1mUy0J1O4jsRHF2Dx_DnaRUE_jh2hypNv"
+      imageUrl: "/img/services/img12.jpeg"
     },
     {
       id: 13,
@@ -275,7 +275,7 @@ const ServicesCatalog: React.FC = () => {
         "Монолитные работы",
         "Контроль прочности"
       ],
-      imageUrl: "https://mostopora.ru/site/images/1/montazh-zhelezobetonnyh-balok.jpg"
+      imageUrl: "/img/services/img13.jpeg"
     },
     {
       id: 14,
@@ -287,7 +287,7 @@ const ServicesCatalog: React.FC = () => {
         "Энергосбережение",
         "Снижение теплопотерь"
       ],
-      imageUrl: "https://paritet-energo.ru/picture/slider-2017-12.png"
+      imageUrl: "/img/services/img14.jpeg"
     },
     {
       id: 15,
@@ -299,7 +299,7 @@ const ServicesCatalog: React.FC = () => {
         "Защита от промерзания",
         "Энергоэффективность"
       ],
-      imageUrl: "https://millennium-official.ru/upload/iblock/00e/vh6mpzi5w06qa15h8r0fp78hz750jn7m.jpg"
+      imageUrl: "/img/services/img15.jpeg"
     },
     {
       id: 16,
@@ -311,7 +311,7 @@ const ServicesCatalog: React.FC = () => {
         "Обратная засыпка",
         "Вывоз грунта"
       ],
-      imageUrl: "https://arenda-ekskovatora-pogruzchika24.ru/wp-content/uploads/2018/03/razrabotka-kotlovana-1024x630.jpg"
+      imageUrl: "/img/services/img16.jpeg"
     },
     {
       id: 17,
@@ -323,7 +323,7 @@ const ServicesCatalog: React.FC = () => {
         "Строительство",
         "Оборудование внутрь"
       ],
-      imageUrl: "https://iconstr.ru/assets/components/webpgenerator/cache/images/uslugi/stroitelistvo-angarov-pw.webp"
+      imageUrl: "/img/services/img17.jpeg"
     },
     {
       id: 18,
@@ -335,7 +335,7 @@ const ServicesCatalog: React.FC = () => {
         "Доставка оборудования",
         "Специализированный транспорт"
       ],
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrMRxioeNzhHfPhhgv_epmzWKq4uCPr4zKbA&s"
+      imageUrl: "/img/services/img18.jpeg"
     },
     {
       id: 19,
@@ -347,7 +347,7 @@ const ServicesCatalog: React.FC = () => {
         "Обработка дерева",
         "Соблюдение норм пожарной безопасности"
       ],
-      imageUrl: "https://promalp-ural.ru/wp-content/uploads/2019/12/ognezashita-metallicheskih-konstrykciy.jpg"
+      imageUrl: "/img/services/img19.jpeg"
     }
   ];
 
@@ -401,7 +401,7 @@ const ServicesCatalog: React.FC = () => {
           style={{ y: scrollY * 0.5 }}
         >
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('https://rbk-alba.com/userfiles/files/Blog/2025/1/2(1).jpg')] bg-cover bg-center mix-blend-overlay opacity-20" />
+            <div className="absolute inset-0 bg-[url('/img//homesImg/services')] bg-cover bg-center mix-blend-overlay opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
