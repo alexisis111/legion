@@ -8,11 +8,31 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   }
 
   try {
-    const formData = await request.json();
+    // Get raw body as text to handle both JSON and form data
+    const rawBody = await request.text();
+    let formData;
+
+    // Check if the request contains JSON
+    if (rawBody.trim().startsWith('{')) {
+      try {
+        formData = JSON.parse(rawBody);
+      } catch (e) {
+        console.error('Error parsing JSON:', e);
+        return json({ error: 'Invalid JSON format' }, { status: 400 });
+      }
+    } else {
+      // If not JSON, try to parse as form data
+      const formDataRaw = new URLSearchParams(rawBody);
+      formData = Object.fromEntries(formDataRaw);
+    }
 
     // Validate required fields
     if (!formData.name || !formData.email || !formData.message) {
-      return json({ error: 'Missing required fields' }, { status: 400 });
+      return json({
+        error: 'Missing required fields',
+        required: ['name', 'email', 'message'],
+        provided: Object.keys(formData)
+      }, { status: 400 });
     }
 
     // Call the Netlify function that handles the Telegram API call
@@ -36,6 +56,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ success: true, message: netlifyResult.message || 'Message sent to Telegram successfully' });
   } catch (error) {
     console.error('Error processing webhook:', error);
-    return json({ error: 'Internal server error' }, { status: 500 });
+    return json({ error: 'Internal server error', details: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 };
