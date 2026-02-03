@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix forms in TG">
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fix bpla">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/DroneDefensePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/DroneDefensePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ZOKVisualization.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ZOKVisualization.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/PortfolioGallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/PortfolioGallery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/VacanciesGallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/VacanciesGallery.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -369,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770102592294</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="fix bpla">
+      <option name="closed" value="true" />
+      <created>1770103835612</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1770103835612</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +393,7 @@
     <MESSAGE value="fix closed" />
     <MESSAGE value="fixxx" />
     <MESSAGE value="fix forms in TG" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix forms in TG" />
+    <MESSAGE value="fix bpla" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bpla" />
   </component>
 </project>

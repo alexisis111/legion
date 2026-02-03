@@ -12,6 +12,7 @@ interface Vacancy {
   conditions: string[];
   contact: string;
   salary?: string;
+  imageUrl: string;
 }
 
 const VacanciesGallery: React.FC = () => {
@@ -74,7 +75,8 @@ const VacanciesGallery: React.FC = () => {
         "Своевременная выплата заработной платы"
       ],
       contact: "+7 921 591-65-06, +7 931 006-34-46",
-      salary: "По договоренности"
+      salary: "По договоренности",
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF2dQoGPqJys_HOrf2zHnUae5ZRTvoPEccyw&s"
     },
     {
       id: 2,
@@ -92,7 +94,8 @@ const VacanciesGallery: React.FC = () => {
         "Своевременная выплата заработной платы"
       ],
       contact: "+7 921 591-65-06, +7 931 006-34-46",
-      salary: "По договоренности"
+      salary: "По договоренности",
+      imageUrl: "https://www.cmlt.ru/getUserImage?id=9791040"
     },
     {
       id: 3,
@@ -110,7 +113,8 @@ const VacanciesGallery: React.FC = () => {
         "Своевременная выплата заработной платы"
       ],
       contact: "+7 921 591-65-06, +7 931 006-34-46",
-      salary: "По договоренности"
+      salary: "По договоренности",
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgl3iTD6zUxTJysq3RIiYiZFApNA2cferybw&s"
     },
     {
       id: 4,
@@ -127,7 +131,8 @@ const VacanciesGallery: React.FC = () => {
         "Своевременная выплата заработной платы"
       ],
       contact: "+7 921 591-65-06, +7 931 006-34-46",
-      salary: "По договоренности"
+      salary: "По договоренности",
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEL00FCWMEg334Au6Lr2o-1qXzvd53959SaQ&s"
     },
     {
       id: 5,
@@ -146,7 +151,8 @@ const VacanciesGallery: React.FC = () => {
         "Своевременная выплата заработной платы"
       ],
       contact: "+7 921 591-65-06, +7 931 006-34-46",
-      salary: "По договоренности"
+      salary: "По договоренности",
+      imageUrl: "https://akkma.ru/upload/medialibrary/3bc/3bcc605faf8df7347f1d1bc04ce15f76.jpg"
     }
   ];
 
@@ -362,19 +368,11 @@ const VacanciesGallery: React.FC = () => {
                 className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative h-48 overflow-hidden">
-                  {index % 2 === 0 ? (
-                    <img
-                      src="https://images.unsplash.com/photo-1521737711867-e3b97375f7b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                      alt={`Работа ${vacancy.position}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  ) : (
-                    <img
-                      src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                      alt={`Работа ${vacancy.position}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  )}
+                  <img
+                    src={vacancy.imageUrl}
+                    alt={`Работа ${vacancy.position}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   <div className="absolute top-4 right-4">
                     <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">

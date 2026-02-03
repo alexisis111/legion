@@ -66,7 +66,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Северо-Запад России",
       year: "2022",
       category: "construction",
-      imageUrl: "/portfolio-1.jpg"
+      imageUrl: "https://static.tildacdn.com/tild3630-3537-4932-a366-646263306263/galereya_nasosy_07-2.jpg"
     },
     {
       id: 2,
@@ -75,7 +75,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2023",
       category: "construction",
-      imageUrl: "/portfolio-2.jpg"
+      imageUrl: "https://svartm.ru/wp-content/uploads/2025/06/snimok-ekrana-2025-06-20-121536.png"
     },
     {
       id: 3,
@@ -84,7 +84,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Выборгский район",
       year: "2022",
       category: "construction",
-      imageUrl: "/portfolio-3.jpg"
+      imageUrl: "https://smetnoedelo.ru/upload/iblock/04d/dVtuO.jpg"
     },
     {
       id: 4,
@@ -93,7 +93,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2025",
       category: "maintenance",
-      imageUrl: "/portfolio-4.jpg"
+      imageUrl: "https://www.arkronix.ru/upload/iblock/7db/7db6689517eeeec87f80f1ae0703006e.jpg"
     },
     {
       id: 5,
@@ -129,7 +129,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2023",
       category: "security",
-      imageUrl: "/portfolio-1.jpg"
+      imageUrl: "https://static.tildacdn.com/tild6133-3863-4939-a562-636333646437/4-9.jpg"
     },
     {
       id: 9,
