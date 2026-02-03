@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-import { Shield, Users, Award, Clock, MapPin, HardHat, Building2, Target, Zap } from 'lucide-react';
+import {
+  Shield,
+  Users,
+  Award,
+  Clock,
+  MapPin,
+  HardHat,
+  Building2,
+  Target,
+  Zap,
+  CheckCircle,
+  ArrowRight
+} from 'lucide-react';
+import {Link} from "react-router";
 
 const CompanyShowcase: React.FC = () => {
   const { theme } = useTheme();
@@ -384,10 +397,10 @@ const CompanyShowcase: React.FC = () => {
       <section id="services" className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+              initial={{opacity: 0, y: 50}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Основные направления деятельности
@@ -403,102 +416,90 @@ const CompanyShowcase: React.FC = () => {
                 title: "Подготовительные работы",
                 description: "Полный комплекс подготовительных работ для начала строительства",
                 features: ["Демонтаж конструкций", "Подготовка участка", "Устройство лесов", "Благоустройство"],
-                color: "from-blue-500 to-cyan-500",
-                imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                color: "from-blue-500 to-cyan-500"
               },
               {
                 title: "Строительство зданий",
                 description: "Возведение промышленных и гражданских объектов под ключ",
                 features: ["Фундаментные работы", "Монтаж конструкций", "Кровельные работы", "Отделка"],
-                color: "from-purple-500 to-pink-500",
-                imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                color: "from-purple-500 to-pink-500"
               },
               {
                 title: "Металлоконструкции",
                 description: "Изготовление и монтаж металлических конструкций любой сложности",
                 features: ["Проектирование", "Изготовление", "Монтаж", "Антикоррозийная защита"],
-                color: "from-orange-500 to-red-500",
-                imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                color: "from-orange-500 to-red-500"
               },
               {
                 title: "Теплоизоляция",
                 description: "Работы по теплоизоляции оборудования и трубопроводов",
                 features: ["Теплоизоляция труб", "Энергосбережение", "Защита оборудования", "Монтаж"],
-                color: "from-green-500 to-emerald-500",
-                imageUrl: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                color: "from-green-500 to-emerald-500"
               },
               {
                 title: "Защита от БПЛА",
                 description: "Современные системы защиты периметра от беспилотников",
                 features: ["Установка систем", "Настройка", "Обслуживание", "Консультации"],
-                color: "from-indigo-500 to-blue-500",
-                imageUrl: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                color: "from-indigo-500 to-blue-500"
               },
               {
                 title: "Дополнительные услуги",
                 description: "Широкий спектр дополнительных строительных услуг",
                 features: ["Земляные работы", "Грузоперевозки", "Огнезащита", "Ремонтные работы"],
-                color: "from-yellow-500 to-orange-500",
-                imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                color: "from-yellow-500 to-orange-500"
               }
             ].map((service, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={service.imageUrl}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-20`}></div>
-                </div>
+                <motion.div
+                    key={i}
+                    initial={{opacity: 0, scale: 0.9}}
+                    whileInView={{opacity: 1, scale: 1}}
+                    viewport={{once: true}}
+                    transition={{delay: i * 0.1}}
+                    whileHover={{y: -10}}
+                    className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300"
+                >
+                  <div
+                      className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 group-hover:opacity-20 transition-opacity duration-300 rounded-full -translate-y-16 translate-x-16`}/>
 
-                <div className="relative p-8">
-                  <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${service.color} text-white mb-6`}>
-                    <Building2 className="w-6 h-6" />
+                  <div className="relative p-8">
+                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${service.color} text-white mb-6`}>
+                      <Building2 className="w-6 h-6"/>
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">
+                      {service.description}
+                    </p>
+
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature, j) => (
+                          <li key={j} className="flex items-center gap-3">
+                            <CheckCircle className="w-5 h-5 text-green-500"/>
+                            <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                          </li>
+                      ))}
+                    </ul>
+
+                    <Link
+                        to={
+                          service.title === "Подготовительные работы" ? "/services?category=Подготовительные работы" :
+                              service.title === "Металлоконструкции" ? "/services?category=Монтаж металлических конструкций" :
+                                  service.title === "Теплоизоляция" ? "/services?category=Теплоизоляционные работы" :
+                                      service.title === "Защита от БПЛА" ? "/services?category=Дополнительные услуги" :
+                                          service.title === "Дополнительные услуги" ? "/services?category=Дополнительные услуги" :
+                                              service.title === "Строительство зданий" ? "/services?category=Устройство монолитных и сборных бетонных и железобетонных конструкций" :
+                                                  "/services"
+                        }
+                        className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group/link"
+                    >
+                      <span>Подробнее</span>
+                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform"/>
+                    </Link>
                   </div>
-
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    {service.description}
-                  </p>
-
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, j) => (
-                      <li key={j} className="flex items-center gap-3">
-                        <Shield className="w-5 h-5 text-green-500" />
-                        <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a
-                    href={
-                      service.title === "Подготовительные работы" ? "/services?category=Подготовительные работы" :
-                      service.title === "Металлоконструкции" ? "/services?category=Монтаж металлических конструкций" :
-                      service.title === "Теплоизоляция" ? "/services?category=Теплоизоляционные работы" :
-                      service.title === "Защита от БПЛА" ? "/services?category=Дополнительные услуги" :
-                      service.title === "Дополнительные услуги" ? "/services?category=Дополнительные услуги" :
-                      service.title === "Строительство зданий" ? "/services?category=Устройство монолитных и сборных бетонных и железобетонных конструкций" :
-                      "/services"
-                    }
-                    className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group/link"
-                  >
-                    <span>Подробнее</span>
-                    <HardHat className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </motion.div>
+                </motion.div>
             ))}
           </div>
         </div>
@@ -508,10 +509,10 @@ const CompanyShowcase: React.FC = () => {
       <section className="py-24">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+              initial={{opacity: 0, y: 50}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Наши ценности
@@ -524,44 +525,45 @@ const CompanyShowcase: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <Shield className="w-8 h-8" />,
+                icon: <Shield className="w-8 h-8"/>,
                 title: "Безопасность",
                 description: "Приоритет безопасности в каждом проекте"
               },
               {
-                icon: <Award className="w-8 h-8" />,
+                icon: <Award className="w-8 h-8"/>,
                 title: "Качество",
                 description: "Соблюдение всех стандартов и норм"
               },
               {
-                icon: <Clock className="w-8 h-8" />,
+                icon: <Clock className="w-8 h-8"/>,
                 title: "Надежность",
                 description: "Гарантия на все виды работ от 2 до 5 лет"
               },
               {
-                icon: <Users className="w-8 h-8" />,
+                icon: <Users className="w-8 h-8"/>,
                 title: "Команда",
                 description: "Опытные специалисты с профильным образованием"
               }
             ].map((value, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
-              >
-                <div className="inline-flex p-5 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-6">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {value.description}
-                </p>
-              </motion.div>
+                <motion.div
+                    key={i}
+                    initial={{opacity: 0, y: 30}}
+                    whileInView={{opacity: 1, y: 0}}
+                    viewport={{once: true}}
+                    transition={{delay: i * 0.1}}
+                    className="text-center"
+                >
+                  <div
+                      className="inline-flex p-5 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-6">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {value.description}
+                  </p>
+                </motion.div>
             ))}
           </div>
         </div>
@@ -571,10 +573,10 @@ const CompanyShowcase: React.FC = () => {
       <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center text-white"
+              initial={{opacity: 0, y: 50}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              className="text-center text-white"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Готовы начать сотрудничество?
@@ -587,19 +589,19 @@ const CompanyShowcase: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="#contact"
-                className="group inline-flex items-center justify-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                  href="#contact"
+                  className="group inline-flex items-center justify-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 <span>Обсудить проект</span>
-                <HardHat className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <HardHat className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
               </a>
 
               <a
-                href="/services"
-                className="group inline-flex items-center justify-center gap-3 bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white hover:bg-white/10 transition-all duration-300"
+                  href="/services"
+                  className="group inline-flex items-center justify-center gap-3 bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white hover:bg-white/10 transition-all duration-300"
               >
                 <span>Наши услуги</span>
-                <Building2 className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Building2 className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
               </a>
             </div>
 
