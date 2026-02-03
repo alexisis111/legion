@@ -19,16 +19,47 @@ const handler: Handler = async (event, context) => {
   }
 
   try {
-    // Parse the request body
+    // Parse the request body - handle both JSON and form data
     let body;
-    try {
-      body = JSON.parse(event.body || '{}');
-      console.log('Parsed body:', body);
-    } catch (parseError) {
-      console.error('Error parsing request body:', parseError);
+    const contentType = event.headers['content-type'];
+
+    if (contentType && contentType.includes('application/json')) {
+      try {
+        body = JSON.parse(event.body || '{}');
+        console.log('Parsed JSON body:', body);
+      } catch (parseError) {
+        console.error('Error parsing JSON request body:', parseError);
+        return {
+          statusCode: 400,
+          body: JSON.stringify({ error: 'Invalid JSON in request body', details: parseError instanceof Error ? parseError.message : String(parseError) }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
+      }
+    } else if (contentType && contentType.includes('application/x-www-form-urlencoded')) {
+      // Parse form data
+      try {
+        const params = new URLSearchParams(event.body);
+        body = {};
+        for (const [key, value] of params.entries()) {
+          body[key] = value;
+        }
+        console.log('Parsed form data body:', body);
+      } catch (parseError) {
+        console.error('Error parsing form data request body:', parseError);
+        return {
+          statusCode: 400,
+          body: JSON.stringify({ error: 'Invalid form data in request body', details: parseError instanceof Error ? parseError.message : String(parseError) }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
+      }
+    } else {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Invalid JSON in request body', details: parseError instanceof Error ? parseError.message : String(parseError) }),
+        body: JSON.stringify({ error: 'Unsupported content type', contentType }),
         headers: {
           'Content-Type': 'application/json',
         },
