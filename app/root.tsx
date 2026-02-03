@@ -10,6 +10,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Header from "./components/Header";
 import FixedMobileTabs from "./components/FixedMobileTabs";
 import Footer from "./components/Footer";
+import AppWrapper from "./AppWrapper";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -39,16 +40,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <ThemeProvider>
-          <div className="min-h-screen flex flex-col">
-            <Header />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-            <FixedMobileTabs />
-          </div>
-        </ThemeProvider>
+        <div className="min-h-screen flex flex-col">
+          <main className="flex-grow">
+            {children}
+          </main>
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -57,7 +53,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return <AppWrapper />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
