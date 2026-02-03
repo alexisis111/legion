@@ -483,8 +483,14 @@ const ContactForm: React.FC<{ theme: string }> = ({ theme }) => {
       return;
     }
 
+    // Convert form data to FormData object to ensure proper transmission
+    const formDataToSend = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataToSend.append(key, value);
+    });
+
     // Submit form using fetcher
-    fetcher.submit(formData, { method: 'post', action: '/api/telegram-webhook' });
+    fetcher.submit(formDataToSend, { method: 'post', action: '/api/telegram-webhook' });
   };
 
   // Handle submission status based on fetcher state

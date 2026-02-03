@@ -182,8 +182,8 @@ const DroneDefensePage: React.FC = () => {
               {[
                 {
                   icon: <Radio className="w-6 h-6" />,
-                  title: "Радиочастотный контроль",
-                  description: "Обнаружение сигналов управления дронами",
+                  title: "Защита периметра",
+                  description: "Многоуровневая защита",
                   color: "from-blue-500 to-cyan-500"
                 },
                 {
