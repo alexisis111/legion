@@ -194,10 +194,17 @@ const CompanyShowcase: React.FC = () => {
               {[
                 {
                   icon: <Shield className="w-6 h-6" />,
-                  title: "СРО АССО",
+                  title: "Ассоциация \"СК ЛО\"",
                   description: "Членство в саморегулируемой организации",
                   color: "from-blue-500 to-cyan-500"
                 },
+                {
+                  icon: <Shield className="w-6 h-6" />,
+                  title: "Ассоциация СРО \"ОсноваПроект\"",
+                  description: "Членство в саморегулируемой организации",
+                  color: "from-blue-500 to-cyan-500"
+                },
+
                 {
                   icon: <Target className="w-6 h-6" />,
                   title: "Точность работ",
