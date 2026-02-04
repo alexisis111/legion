@@ -28,33 +28,6 @@ const VacanciesGallery: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Particle background for hero
-  const Particles = () => {
-    const particles = Array.from({ length: 30 });
-    return (
-      <div className="absolute inset-0 overflow-hidden">
-        {particles.map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-[2px] h-[2px] bg-white/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 2 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
-    );
-  };
 
   // Данные вакансий на основе информации с сайта
   const vacancies: Vacancy[] = [
@@ -160,36 +133,16 @@ const VacanciesGallery: React.FC = () => {
     <div className="relative overflow-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background with parallax effect */}
-        <motion.div
+        {/* Optimized background with parallax effect */}
+        <div
           className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900"
-          style={{ y: scrollY * 0.5 }}
         >
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[url('/img/homesImg/vacancy')] bg-cover bg-center mix-blend-overlay opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
-          <Particles />
-
-          {/* Animated grid */}
-          <div className="absolute inset-0">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute h-px w-full bg-gradient-to-r from-transparent via-white/5 to-transparent"
-                style={{ top: `${i * 8}%` }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 0.3, 0] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: i * 0.2,
-                }}
-              />
-            ))}
-          </div>
-        </motion.div>
+        </div>
 
         {/* Content */}
         <div className="relative container mx-auto px-4 z-10">

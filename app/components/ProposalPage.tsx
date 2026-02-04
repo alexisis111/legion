@@ -453,8 +453,8 @@ const ProposalPage: React.FC = () => {
     <div className="relative overflow-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background with parallax effect */}
-        <motion.div
+        {/* Optimized background with parallax effect */}
+        <div
           className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900"
         >
           <div className="absolute inset-0">
@@ -462,7 +462,7 @@ const ProposalPage: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Content */}
         <div className="relative container mx-auto px-4 z-10">
