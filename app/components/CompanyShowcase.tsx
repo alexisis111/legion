@@ -184,6 +184,7 @@ const CompanyShowcase: React.FC = () => {
               </motion.div>
             </motion.div>
 
+
             {/* Right column - Feature cards */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
