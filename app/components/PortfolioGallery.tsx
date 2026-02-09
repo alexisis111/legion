@@ -39,7 +39,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Северо-Запад России",
       year: "2022",
       category: "construction",
-      imageUrl: "/img/portfolio.jpeg/img1.jpeg"
+      imageUrl: "/img/portfolio/img1.jpeg"
     },
     {
       id: 2,
@@ -48,7 +48,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2023",
       category: "construction",
-      imageUrl: "/img/portfolio.jpeg/img2.jpeg"
+      imageUrl: "/img/portfolio/img2.jpeg"
     },
     {
       id: 3,
@@ -57,7 +57,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Выборгский район",
       year: "2022",
       category: "construction",
-      imageUrl: "/img/portfolio.jpeg/img3.jpeg"
+      imageUrl: "/img/portfolio/img3.jpeg"
     },
     {
       id: 4,
@@ -66,7 +66,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2025",
       category: "maintenance",
-      imageUrl: "/img/portfolio.jpeg/img4.jpeg"
+      imageUrl: "/img/portfolio/img4.jpeg"
     },
     {
       id: 5,
@@ -75,7 +75,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Северо-Запад России",
       year: "2022",
       category: "construction",
-      imageUrl: "/img/portfolio.jpeg/img5.jpeg"
+      imageUrl: "/img/portfolio/img5.jpeg"
     },
     {
       id: 6,
@@ -84,7 +84,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2024",
       category: "maintenance",
-      imageUrl: "/img/portfolio.jpeg/img6.jpeg"
+      imageUrl: "/img/portfolio/img6.jpeg"
     },
     {
       id: 7,
@@ -93,7 +93,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Ленинградская область",
       year: "2025",
       category: "maintenance",
-      imageUrl: "/img/portfolio.jpeg/img7.jpeg"
+      imageUrl: "/img/portfolio/img7.jpeg"
     },
     {
       id: 8,
@@ -111,7 +111,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Выборгский район",
       year: "2024",
       category: "construction",
-      imageUrl: "/img/portfolio.jpeg/img9.jpeg"
+      imageUrl: "/img/portfolio./img9.jpeg"
     }
   ];
 
