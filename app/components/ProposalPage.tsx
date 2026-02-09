@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, Timer, Percent, Gift } from 'lucide-react';
+import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, Timer, Percent, Gift, Star } from 'lucide-react';
 import { Link } from 'react-router';
 
 const ProposalPage: React.FC = () => {
@@ -40,7 +40,7 @@ const ProposalPage: React.FC = () => {
     const timer = setInterval(() => {
       const timeLeftObj = calculateTimeLeft();
       setTimeLeft(timeLeftObj);
-      
+
       if (timeLeftObj.days === 0 && timeLeftObj.hours === 0 && timeLeftObj.minutes === 0 && timeLeftObj.seconds === 0) {
         setIsExpired(true);
         clearInterval(timer);
@@ -453,15 +453,18 @@ const ProposalPage: React.FC = () => {
     <div className="relative overflow-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Optimized background with parallax effect */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900"
-        >
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900">
+          {/* Decorative elements */}
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('https://cdn.textstudio.com/text-effect/678/77902/%D0%A1%D0%9F%D0%95%D0%A6%D0%98%D0%90%D0%9B%D0%AC%D0%9D%D0%9E%D0%95-%D0%9F%D0%A0%D0%95%D0%94%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95.webp')] bg-cover bg-center mix-blend-overlay opacity-20" />
+            <div className="absolute inset-0 bg-[url('https://cdn.textstudio.com/text-effect/678/77902/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%BE%D0%B2%D1%82%D0%BE%D1%80%20%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%20%D0%BF%D0%BE%D0%B2%D0%B5%D1%80%D1%85%20%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82%D0%B0.webp')] bg-cover bg-center mix-blend-overlay opacity-10" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>
+
+          {/* Floating elements */}
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
         {/* Content */}
@@ -479,7 +482,7 @@ const ProposalPage: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 rounded-full px-4 py-2"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 rounded-full px-4 py-2 shadow-lg"
               >
                 <Gift className="w-4 h-4 text-white" />
                 <span className="text-sm font-medium text-white">Ограниченное предложение</span>
@@ -506,7 +509,7 @@ const ProposalPage: React.FC = () => {
                 transition={{ delay: 0.4 }}
                 className="text-xl text-gray-300 max-w-2xl"
               >
-                Только в течение 24 часов получите скидку 25% на выбранные услуги. 
+                Только в течение 24 часов получите скидку 25% на выбранные услуги.
                 Не упустите возможность сэкономить на строительных и монтажных работах.
               </motion.p>
 
@@ -515,37 +518,48 @@ const ProposalPage: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
+                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl"
               >
                 <div className="flex items-center gap-2 mb-4">
                   <Timer className="w-5 h-5 text-red-400" />
                   <span className="text-white font-semibold">Осталось времени:</span>
                 </div>
-                
-                <div className="flex justify-between">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white">{timeLeft.days.toString().padStart(2, '0')}</div>
-                    <div className="text-sm text-gray-300">Дней</div>
+
+                <div className="grid grid-cols-4 gap-3">
+                  <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded-xl p-4 shadow-inner">
+                    <div className="text-3xl font-bold text-white mb-1">{timeLeft.days.toString().padStart(2, '0')}</div>
+                    <div className="text-xs text-gray-300 uppercase tracking-wide">Дней</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                    <div className="text-sm text-gray-300">Часов</div>
+                  <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded-xl p-4 shadow-inner">
+                    <div className="text-3xl font-bold text-white mb-1">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                    <div className="text-xs text-gray-300 uppercase tracking-wide">Часов</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                    <div className="text-sm text-gray-300">Минут</div>
+                  <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded-xl p-4 shadow-inner">
+                    <div className="text-3xl font-bold text-white mb-1">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                    <div className="text-xs text-gray-300 uppercase tracking-wide">Минут</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-                    <div className="text-sm text-gray-300">Секунд</div>
+                  <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded-xl p-4 shadow-inner">
+                    <div className="text-3xl font-bold text-white mb-1">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                    <div className="text-xs text-gray-300 uppercase tracking-wide">Секунд</div>
                   </div>
                 </div>
-                
+
                 {isExpired && (
-                  <div className="mt-4 text-center text-red-400 font-bold">
+                  <div className="mt-4 text-center text-red-400 font-bold bg-red-500/20 py-2 rounded-lg">
                     Время истекло! Скидка больше не действует.
                   </div>
                 )}
+              </motion.div>
+              
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <Link to="/contact" className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                  Получить скидку <ArrowRight className="inline ml-2 w-5 h-5" />
+                </Link>
               </motion.div>
             </motion.div>
 
@@ -560,20 +574,20 @@ const ProposalPage: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
-                className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-sm rounded-2xl p-8 border border-red-500/30"
+                className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-sm rounded-2xl p-8 border border-red-500/30 shadow-xl"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-red-500 to-orange-500 text-white">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-red-500 to-orange-500 text-white shadow-lg">
                     <Percent className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Специальная скидка</h3>
                 </div>
-                
+
                 <div className="text-center mb-6">
                   <div className="text-5xl font-bold text-white mb-2">25%</div>
                   <div className="text-gray-300">на выбранные услуги</div>
                 </div>
-                
+
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2 text-gray-300">
                     <CheckCircle className="w-5 h-5 text-green-400" />
@@ -592,6 +606,14 @@ const ProposalPage: React.FC = () => {
                     <span>Гарантия качества</span>
                   </li>
                 </ul>
+                
+                <div className="mt-6 pt-4 border-t border-white/20">
+                  <div className="flex items-center justify-center gap-2 text-yellow-300">
+                    <Star className="w-5 h-5 fill-current" />
+                    <span className="font-medium">Более 10 лет на рынке</span>
+                    <Star className="w-5 h-5 fill-current" />
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -652,6 +674,15 @@ const ProposalPage: React.FC = () => {
                         {service.category}
                       </span>
                     </div>
+                    
+                    {/* Discount badge */}
+                    {!isExpired && (
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                          -25%
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-6">
@@ -661,197 +692,101 @@ const ProposalPage: React.FC = () => {
                           {service.title}
                         </h3>
                         <p className="text-sm text-blue-600 dark:text-blue-400">
-                          {service.category}
+                          {service.description}
                         </p>
                       </div>
-
-                      {isExpired ? (
-                        <span className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-semibold px-2 py-1 rounded-full">
-                          Скидка истекла
-                        </span>
-                      ) : (
-                        <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                          -25%
-                        </span>
-                      )}
-                    </div>
-
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      {service.description}
-                    </p>
-
-                    <div className="mb-6">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-gray-500 dark:text-gray-400 text-sm">Цена:</span>
-                        <span className="line-through text-gray-500 dark:text-gray-400">
+                      <div className="text-right">
+                        <div className="text-lg font-bold text-gray-900 dark:text-white">
+                          {formatPrice(discountedPrice)}
+                        </div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400 line-through">
                           {service.price}
-                        </span>
+                        </div>
                       </div>
+                    </div>
 
+                    <ul className="space-y-2 mb-4">
+                      {service.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <span className="text-sm">{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-500 dark:text-gray-400 text-sm">Со скидкой:</span>
-                        <span className="text-2xl font-bold text-green-600 dark:text-green-400">
-                          {discountedPrice.toFixed(0)} руб
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <Target className="w-4 h-4 text-blue-500" />
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Этапы работ
+                          </span>
+                        </div>
+                        <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                      </div>
+                      
+                      <div className="mt-3 space-y-1 max-h-24 overflow-y-auto">
+                        {service.stages.slice(0, 3).map((stage, idx) => (
+                          <div key={idx} className="text-xs text-gray-500 dark:text-gray-400 flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 flex-shrink-0"></div>
+                            <span>{stage}</span>
+                          </div>
+                        ))}
+                        {service.stages.length > 3 && (
+                          <div className="text-xs text-blue-500 font-medium mt-1">
+                            +{service.stages.length - 3} этапов...
+                          </div>
+                        )}
                       </div>
                     </div>
-
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
-                        Включает:
-                      </h4>
-                      <ul className="space-y-1">
-                        {service.details.slice(0, 3).map((detail, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
-                            <span className="text-gray-600 dark:text-gray-400 text-sm">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex gap-3">
+                    
+                    <div className="mt-6">
                       <Link
                         to={`/service/${service.id}?discount=true&serviceId=${service.id}`}
-                        className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 flex items-center justify-center"
+                        className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium py-2.5 px-4 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center gap-2"
                       >
-                        Подробнее
+                        Подробнее <ArrowRight className="w-4 h-4" />
                       </Link>
-
-                      {!isExpired ? (
-                        <Link
-                          to="/contacts"
-                          className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 flex items-center justify-center"
-                        >
-                          Заказать
-                        </Link>
-                      ) : (
-                        <button
-                          className="flex-1 py-3 px-4 rounded-lg font-medium transition-all bg-gray-300 text-gray-500 cursor-not-allowed flex items-center justify-center"
-                          disabled
-                        >
-                          Скидка истекла
-                        </button>
-                      )}
                     </div>
                   </div>
+                  
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </motion.div>
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* Advantages Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Почему стоит воспользоваться предложением?
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Специальное предложение на популярные услуги с гарантией качества
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <Shield className="w-8 h-8" />,
-                title: "Гарантия качества",
-                description: "Все работы выполняются с соблюдением стандартов"
-              },
-              {
-                icon: <Clock className="w-8 h-8" />,
-                title: "Соблюдение сроков",
-                description: "Строгое следование графику выполнения работ"
-              },
-              {
-                icon: <Award className="w-8 h-8" />,
-                title: "Опытная команда",
-                description: "Специалисты с многолетним опытом работы"
-              },
-              {
-                icon: <Zap className="w-8 h-8" />,
-                title: "Быстрое выполнение",
-                description: "Оперативное выполнение задач"
-              }
-            ].map((advantage, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative text-center"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 text-white mb-6">
-                    {advantage.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                    {advantage.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {advantage.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+          
+          {/* View All Services Button */}
+          <div className="text-center mt-16">
+            <Link to="/services" className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+              Посмотреть все услуги <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center text-white"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Не упустите шанс сэкономить!
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Готовы воспользоваться специальным предложением?
             </h2>
-
-            <p className="text-xl opacity-90 max-w-3xl mx-auto mb-12">
-              Скидка 25% действует только 24 часа. Закажите услугу прямо сейчас и сэкономьте значительную сумму.
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
+              Свяжитесь с нами прямо сейчас и получите скидку 25% на выбранные услуги
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contacts"
-                className="group inline-flex items-center justify-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
-              >
-                <span>Заказать сейчас</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/contact" className="bg-white text-blue-600 font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                Связаться с нами
               </Link>
-
-              <Link
-                to="/services"
-                className="group inline-flex items-center justify-center gap-3 bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white hover:bg-white/10 transition-all duration-300"
-              >
-                <span>Посмотреть все услуги</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Link to="/calculator" className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-xl hover:bg-white/10 transition-colors duration-300">
+                Рассчитать стоимость
               </Link>
             </div>
-
-            {isExpired ? (
-              <p className="mt-8 opacity-75 text-red-300 font-bold">
-                Время действия скидки истекло. Следите за новыми предложениями!
-              </p>
-            ) : (
-              <p className="mt-8 opacity-75">
-                Осталось: <span className="font-bold">{timeLeft.hours}ч {timeLeft.minutes}м {timeLeft.seconds}с</span>
-              </p>
-            )}
           </motion.div>
         </div>
       </section>

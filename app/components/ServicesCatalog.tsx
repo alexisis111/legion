@@ -651,18 +651,18 @@ const ServicesCatalog: React.FC = () => {
                                 <Percent className="w-3 h-3 mr-1" />
                                 Специальное предложение
                               </div>
-                              <div className="mt-2 flex justify-center gap-1">
-                                <div className="text-center">
+                              <div className="mt-2 grid grid-cols-3 gap-1">
+                                <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded p-1.5 shadow-inner">
                                   <div className="text-sm font-bold text-white">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                                  <div className="text-xs text-gray-300">Ч</div>
+                                  <div className="text-[0.6rem] text-gray-300 uppercase tracking-wide">Ч</div>
                                 </div>
-                                <div className="text-center">
+                                <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded p-1.5 shadow-inner">
                                   <div className="text-sm font-bold text-white">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                                  <div className="text-xs text-gray-300">М</div>
+                                  <div className="text-[0.6rem] text-gray-300 uppercase tracking-wide">М</div>
                                 </div>
-                                <div className="text-center">
+                                <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded p-1.5 shadow-inner">
                                   <div className="text-sm font-bold text-white">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-                                  <div className="text-xs text-gray-300">С</div>
+                                  <div className="text-[0.6rem] text-gray-300 uppercase tracking-wide">С</div>
                                 </div>
                               </div>
                             </div>

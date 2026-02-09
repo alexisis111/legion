@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fixImgs">
-      <change beforePath="$PROJECT_DIR$/app/components/PortfolioGallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/PortfolioGallery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/ProposalPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ProposalPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -452,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770651602586</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="fixImgs">
+      <option name="closed" value="true" />
+      <created>1770659158111</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1770659158111</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,6 +483,7 @@
     <MESSAGE value="fix imgs" />
     <MESSAGE value="fix optimized" />
     <MESSAGE value="cookiesbannersadd" />
-    <option name="LAST_COMMIT_MESSAGE" value="cookiesbannersadd" />
+    <MESSAGE value="fixImgs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixImgs" />
   </component>
 </project>
