@@ -5,6 +5,7 @@ import Header from './components/Header';
 import FixedMobileTabs from './components/FixedMobileTabs';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
+import CookieConsentBanner from '../src/components/CookieConsentBanner';
 
 const AppWrapper: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +32,7 @@ const AppWrapper: React.FC = () => {
             </main>
             <Footer />
             <FixedMobileTabs />
+            <CookieConsentBanner />
           </>
         )}
       </div>
