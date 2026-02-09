@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-import { Shield, Building2, Target, Zap, Award, Clock, Users, CheckCircle, ChevronRight, ArrowRight, MapPin, Calendar, Package, Hammer, Ruler, Percent } from 'lucide-react';
+import { Shield, Building2, CheckCircle, ChevronRight, ArrowRight, Package, Hammer, Ruler, Percent } from 'lucide-react';
 import { Link } from 'react-router';
 
 interface Service {
@@ -598,23 +598,23 @@ const ServiceDetailPage: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="mt-4 p-3 rounded-lg bg-white/10 backdrop-blur-sm">
-                        <div className="flex items-center gap-2">
+                      <div className="mt-4 p-3 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 shadow-xl">
+                        <div className="flex items-center gap-2 mb-2">
                           <Percent className="w-4 h-4 text-yellow-400" />
                           <span className="text-yellow-400 font-semibold">Специальное предложение на 24 часа</span>
                         </div>
-                        <div className="mt-2 flex justify-center gap-2">
-                          <div className="text-center">
-                            <div className="text-lg font-bold text-white">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                            <div className="text-xs text-gray-300">Часов</div>
+                        <div className="grid grid-cols-3 gap-2">
+                          <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded-lg p-2 shadow-inner">
+                            <div className="text-lg font-bold text-white mb-0.5">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                            <div className="text-[0.6rem] text-gray-300 uppercase tracking-wide">Ч</div>
                           </div>
-                          <div className="text-center">
-                            <div className="text-lg font-bold text-white">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                            <div className="text-xs text-gray-300">Минут</div>
+                          <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded-lg p-2 shadow-inner">
+                            <div className="text-lg font-bold text-white mb-0.5">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                            <div className="text-[0.6rem] text-gray-300 uppercase tracking-wide">М</div>
                           </div>
-                          <div className="text-center">
-                            <div className="text-lg font-bold text-white">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-                            <div className="text-xs text-gray-300">Секунд</div>
+                          <div className="text-center bg-gradient-to-b from-white/20 to-white/5 rounded-lg p-2 shadow-inner">
+                            <div className="text-lg font-bold text-white mb-0.5">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                            <div className="text-[0.6rem] text-gray-300 uppercase tracking-wide">С</div>
                           </div>
                         </div>
                       </div>
@@ -692,7 +692,7 @@ const ServiceDetailPage: React.FC = () => {
                 <h2 className={`text-3xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                   Описание услуги
                 </h2>
-                
+
                 <div className={`rounded-2xl p-8 shadow-lg ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
@@ -701,15 +701,15 @@ const ServiceDetailPage: React.FC = () => {
                   <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                     {service.description}
                   </p>
-                  
+
                   <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>
                     Что входит в услугу:
                   </h3>
-                  
+
                   <ul className="space-y-3">
                     {service.details.map((detail, index) => (
-                      <li 
-                        key={index} 
+                      <li
+                        key={index}
                         className={`flex items-start ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}
                       >
                         <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
@@ -719,13 +719,13 @@ const ServiceDetailPage: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              
+
               {/* Service Stages */}
               <div>
                 <h2 className={`text-3xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                   Этапы выполнения
                 </h2>
-                
+
                 <div className={`rounded-2xl p-8 shadow-lg ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
@@ -849,7 +849,7 @@ const ServiceDetailPage: React.FC = () => {
             </h2>
 
             <p className="text-xl opacity-90 max-w-3xl mx-auto mb-12">
-              Свяжитесь с нами прямо сейчас и получите консультацию от наших специалистов. 
+              Свяжитесь с нами прямо сейчас и получите консультацию от наших специалистов.
               Мы поможем реализовать ваш проект с учетом всех требований и пожеланий.
             </p>
 
