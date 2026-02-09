@@ -138,7 +138,7 @@ const VacanciesGallery: React.FC = () => {
           className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900"
         >
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('/img/homesImg/vacancy')] bg-cover bg-center mix-blend-overlay opacity-20" />
+            <div className="absolute inset-0 bg-[url('/img/homesImg/vacancy.jpeg')] bg-cover bg-center mix-blend-overlay opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
           </div>

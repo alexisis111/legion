@@ -32,7 +32,7 @@ export function Welcome() {
                 className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900"
             >
               <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-[url('/img/homesImg/home')] bg-cover bg-center mix-blend-overlay opacity-20" />
+                <div className="absolute inset-0 bg-[url('/img/homesImg/home.jpeg')] bg-cover bg-center mix-blend-overlay opacity-20" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-purple-600/10" />
               </div>
@@ -363,12 +363,12 @@ export function Welcome() {
 
                         <Link
                             to={
-                              service.title === "Подготовительные работы" ? "/services?category=Подготовительные работы" :
-                              service.title === "Металлоконструкции" ? "/services?category=Монтаж металлических конструкций" :
-                              service.title === "Теплоизоляция" ? "/services?category=Теплоизоляционные работы" :
-                              service.title === "Защита от БПЛА" ? "/services?category=Дополнительные услуги" :
-                              service.title === "Дополнительные услуги" ? "/services?category=Дополнительные услуги" :
-                              service.title === "Строительство зданий" ? "/services?category=Устройство монолитных и сборных бетонных и железобетонных конструкций" :
+                              service.title === "Подготовительные работы" ? "/services.jpeg?category=Подготовительные работы" :
+                              service.title === "Металлоконструкции" ? "/services.jpeg?category=Монтаж металлических конструкций" :
+                              service.title === "Теплоизоляция" ? "/services.jpeg?category=Теплоизоляционные работы" :
+                              service.title === "Защита от БПЛА" ? "/services.jpeg?category=Дополнительные услуги" :
+                              service.title === "Дополнительные услуги" ? "/services.jpeg?category=Дополнительные услуги" :
+                              service.title === "Строительство зданий" ? "/services.jpeg?category=Устройство монолитных и сборных бетонных и железобетонных конструкций" :
                               "/services"
                             }
                             className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group/link"

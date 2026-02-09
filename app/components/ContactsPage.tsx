@@ -27,7 +27,7 @@ const ContactsPage: React.FC = () => {
           className="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900"
         >
           <div
-            className="absolute inset-0 bg-[url('/img/homesImg/contacts')] bg-cover bg-center mix-blend-overlay opacity-20"
+            className="absolute inset-0 bg-[url('/img/homesImg/contacts.jpeg')] bg-cover bg-center mix-blend-overlay opacity-20"
             style={{
               transform: 'translateZ(-1px) scale(1.1)',
               willChange: 'transform',
