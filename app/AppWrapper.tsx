@@ -22,21 +22,21 @@ const AppWrapper: React.FC = () => {
   }, []);
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen flex flex-col">
-        {isLoading ? <LoadingScreen /> : (
-          <>
-            <Header />
-            <main className="flex-grow">
-              <Outlet />
-            </main>
-            <Footer />
-            <FixedMobileTabs />
-            <CookieConsentBanner />
-          </>
-        )}
-      </div>
-    </ThemeProvider>
+      <ThemeProvider>
+        <div className="min-h-screen flex flex-col">
+          {isLoading ? <LoadingScreen /> : (
+              <>
+                <Header />
+                <main className="flex-grow">
+                  <Outlet />
+                </main>
+                <Footer />
+                <FixedMobileTabs />
+                <CookieConsentBanner />
+              </>
+          )}
+        </div>
+      </ThemeProvider>
   );
 };
 

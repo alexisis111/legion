@@ -106,7 +106,7 @@ const ServicesCatalog: React.FC = () => {
         "Удаление строительных конструкций",
         "Вывоз строительного мусора"
       ],
-      imageUrl: "/img/services.jpeg/img1.jpeg"
+      imageUrl: "/img/services/img1.jpeg"
     },
     {
       id: 2,
@@ -118,7 +118,7 @@ const ServicesCatalog: React.FC = () => {
         "Сборка внутренних лесов",
         "Безопасная эксплуатация"
       ],
-      imageUrl: "/img/services.jpeg/img2.jpeg"
+      imageUrl: "/img/services/img2.jpeg"
     },
     {
       id: 3,
@@ -130,7 +130,7 @@ const ServicesCatalog: React.FC = () => {
         "Разметка участка",
         "Подведение коммуникаций"
       ],
-      imageUrl: "/img/services.jpeg/img3.jpeg"
+      imageUrl: "/img/services/img3.jpeg"
     },
     {
       id: 4,
@@ -142,7 +142,7 @@ const ServicesCatalog: React.FC = () => {
         "Озеленение",
         "Монтаж малых архитектурных форм"
       ],
-      imageUrl: "/img/services.jpeg/img4.jpeg"
+      imageUrl: "/img/services/img4.jpeg"
     },
     {
       id: 5,
@@ -154,7 +154,7 @@ const ServicesCatalog: React.FC = () => {
         "Любая сложность",
         "Контроль качества"
       ],
-      imageUrl: "/img/services.jpeg/img5.jpeg"
+      imageUrl: "/img/services/img5.jpeg"
     },
     {
       id: 6,
@@ -166,7 +166,7 @@ const ServicesCatalog: React.FC = () => {
         "Ремонт систем",
         "Обвязка оборудования"
       ],
-      imageUrl: "/img/services.jpeg/img6.jpeg"
+      imageUrl: "/img/services/img6.jpeg"
     },
     {
       id: 7,
@@ -178,7 +178,7 @@ const ServicesCatalog: React.FC = () => {
         "Монтаж конструкций",
         "Обустройство безопасного доступа"
       ],
-      imageUrl: "/img/services.jpeg/img7.jpeg"
+      imageUrl: "/img/services/img7.jpeg"
     },
     {
       id: 8,
@@ -190,7 +190,7 @@ const ServicesCatalog: React.FC = () => {
         "Обработка бетона",
         "Применение современных материалов"
       ],
-      imageUrl: "/img/services.jpeg/img8.jpeg"
+      imageUrl: "/img/services/img8.jpeg"
     },
     {
       id: 9,
@@ -202,7 +202,7 @@ const ServicesCatalog: React.FC = () => {
         "Керамогранит",
         "Искусственный и натуральный камень"
       ],
-      imageUrl: "/img/services.jpeg/img9.jpeg"
+      imageUrl: "/img/services/img9.jpeg"
     },
     {
       id: 10,
@@ -214,7 +214,7 @@ const ServicesCatalog: React.FC = () => {
         "Устройство блочных стен",
         "Армирование конструкций"
       ],
-      imageUrl: "/img/services.jpeg/img10.jpeg"
+      imageUrl: "/img/services/img10.jpeg"
     },
     {
       id: 11,
@@ -226,7 +226,7 @@ const ServicesCatalog: React.FC = () => {
         "Монтаж арматуры",
         "Контроль качества"
       ],
-      imageUrl: "/img/services.jpeg/img11.jpeg"
+      imageUrl: "/img/services/img11.jpeg"
     },
     {
       id: 12,
@@ -238,7 +238,7 @@ const ServicesCatalog: React.FC = () => {
         "Ремонт фундаментов",
         "Фундаменты под оборудование"
       ],
-      imageUrl: "/img/services.jpeg/img12.jpeg"
+      imageUrl: "/img/services/img12.jpeg"
     },
     {
       id: 13,
@@ -250,7 +250,7 @@ const ServicesCatalog: React.FC = () => {
         "Монолитные работы",
         "Контроль прочности"
       ],
-      imageUrl: "/img/services.jpeg/img13.jpeg"
+      imageUrl: "/img/services/img13.jpeg"
     },
     {
       id: 14,
@@ -262,7 +262,7 @@ const ServicesCatalog: React.FC = () => {
         "Энергосбережение",
         "Снижение теплопотерь"
       ],
-      imageUrl: "/img/services.jpeg/img14.jpeg"
+      imageUrl: "/img/services/img14.jpeg"
     },
     {
       id: 15,
@@ -274,7 +274,7 @@ const ServicesCatalog: React.FC = () => {
         "Защита от промерзания",
         "Энергоэффективность"
       ],
-      imageUrl: "/img/services.jpeg/img15.jpeg"
+      imageUrl: "/img/services/img15.jpeg"
     },
     {
       id: 16,
@@ -286,7 +286,7 @@ const ServicesCatalog: React.FC = () => {
         "Обратная засыпка",
         "Вывоз грунта"
       ],
-      imageUrl: "/img/services.jpeg/img16.jpeg"
+      imageUrl: "/img/services/img16.jpeg"
     },
     {
       id: 17,
@@ -298,7 +298,7 @@ const ServicesCatalog: React.FC = () => {
         "Строительство",
         "Оборудование внутрь"
       ],
-      imageUrl: "/img/services.jpeg/img17.jpeg"
+      imageUrl: "/img/services/img17.jpeg"
     },
     {
       id: 18,
@@ -310,7 +310,7 @@ const ServicesCatalog: React.FC = () => {
         "Доставка оборудования",
         "Специализированный транспорт"
       ],
-      imageUrl: "/img/services.jpeg/img18.jpeg"
+      imageUrl: "/img/services/img18.jpeg"
     },
     {
       id: 19,
@@ -322,7 +322,7 @@ const ServicesCatalog: React.FC = () => {
         "Обработка дерева",
         "Соблюдение норм пожарной безопасности"
       ],
-      imageUrl: "/img/services.jpeg/img19.jpeg"
+      imageUrl: "/img/services/img19.jpeg"
     }
   ];
 
