@@ -110,7 +110,7 @@ const ServiceDetailPage: React.FC = () => {
         "Вывоз мусора",
         "Уборка территории"
       ],
-      imageUrl: "/img/services.jpeg/img1.jpeg"
+      imageUrl: "/img/services/img1.jpeg"
     },
     {
       id: 2,
@@ -130,7 +130,7 @@ const ServiceDetailPage: React.FC = () => {
         "Проверка безопасности",
         "Эксплуатация и демонтаж"
       ],
-      imageUrl: "/img/services.jpeg/img2.jpeg"
+      imageUrl: "/img/services/img2.jpeg"
     },
     {
       id: 3,
@@ -150,7 +150,7 @@ const ServiceDetailPage: React.FC = () => {
         "Подведение временных коммуникаций",
         "Устройство подъездных путей"
       ],
-      imageUrl: "/img/services.jpeg/img3.jpeg"
+      imageUrl: "/img/services/img3.jpeg"
     },
     {
       id: 4,
@@ -170,7 +170,7 @@ const ServiceDetailPage: React.FC = () => {
         "Озеленение",
         "Монтаж элементов благоустройства"
       ],
-      imageUrl: "/img/services.jpeg/img4.jpeg"
+      imageUrl: "/img/services/img4.jpeg"
     },
     {
       id: 5,
@@ -190,7 +190,7 @@ const ServiceDetailPage: React.FC = () => {
         "Контроль качества",
         "Доставка и монтаж"
       ],
-      imageUrl: "/img/services.jpeg/img5.jpeg"
+      imageUrl: "/img/services/img5.jpeg"
     },
     {
       id: 6,
@@ -210,7 +210,7 @@ const ServiceDetailPage: React.FC = () => {
         "Обвязка оборудования",
         "Пусконаладочные работы"
       ],
-      imageUrl: "/img/services.jpeg/img6.jpeg"
+      imageUrl: "/img/services/img6.jpeg"
     },
     {
       id: 7,
@@ -230,7 +230,7 @@ const ServiceDetailPage: React.FC = () => {
         "Обустройство ограждений",
         "Сдача в эксплуатацию"
       ],
-      imageUrl: "/img/services.jpeg/img7.jpeg"
+      imageUrl: "/img/services/img7.jpeg"
     },
     {
       id: 8,
@@ -250,7 +250,7 @@ const ServiceDetailPage: React.FC = () => {
         "Нанесение защитного покрытия",
         "Контроль качества"
       ],
-      imageUrl: "/img/services.jpeg/img8.jpeg"
+      imageUrl: "/img/services/img8.jpeg"
     },
     {
       id: 9,
@@ -270,7 +270,7 @@ const ServiceDetailPage: React.FC = () => {
         "Затирка швов",
         "Финальная уборка"
       ],
-      imageUrl: "/img/services.jpeg/img9.jpeg"
+      imageUrl: "/img/services/img9.jpeg"
     },
     {
       id: 10,
@@ -290,7 +290,7 @@ const ServiceDetailPage: React.FC = () => {
         "Контроль геометрии",
         "Завершающая отделка"
       ],
-      imageUrl: "/img/services.jpeg/img10.jpeg"
+      imageUrl: "/img/services/img10.jpeg"
     },
     {
       id: 11,
@@ -310,7 +310,7 @@ const ServiceDetailPage: React.FC = () => {
         "Установка опалубки",
         "Проверка перед бетонированием"
       ],
-      imageUrl: "/img/services.jpeg/img11.jpeg"
+      imageUrl: "/img/services/img11.jpeg"
     },
     {
       id: 12,
@@ -330,7 +330,7 @@ const ServiceDetailPage: React.FC = () => {
         "Монтаж опалубки и арматуры",
         "Бетонирование и уход за бетоном"
       ],
-      imageUrl: "/img/services.jpeg/img12.jpeg"
+      imageUrl: "/img/services/img12.jpeg"
     },
     {
       id: 13,
@@ -350,7 +350,7 @@ const ServiceDetailPage: React.FC = () => {
         "Монтаж конструкций",
         "Крепление и выверка"
       ],
-      imageUrl: "/img/services.jpeg/img13.jpeg"
+      imageUrl: "/img/services/img13.jpeg"
     },
     {
       id: 14,
@@ -370,7 +370,7 @@ const ServiceDetailPage: React.FC = () => {
         "Монтаж теплоизоляции",
         "Обшивка защитным покрытием"
       ],
-      imageUrl: "/img/services.jpeg/img14.jpeg"
+      imageUrl: "/img/services/img14.jpeg"
     },
     {
       id: 15,
@@ -390,7 +390,7 @@ const ServiceDetailPage: React.FC = () => {
         "Монтаж теплоизоляции",
         "Обшивка защитным покрытием"
       ],
-      imageUrl: "/img/services.jpeg/img15.jpeg"
+      imageUrl: "/img/services/img15.jpeg"
     },
     {
       id: 16,
@@ -410,7 +410,7 @@ const ServiceDetailPage: React.FC = () => {
         "Вывоз грунта",
         "Выравнивание территории"
       ],
-      imageUrl: "/img/services.jpeg/img16.jpeg"
+      imageUrl: "/img/services/img16.jpeg"
     },
     {
       id: 17,
@@ -430,7 +430,7 @@ const ServiceDetailPage: React.FC = () => {
         "Обшивка сэндвич-панелями",
         "Оборудование внутрь"
       ],
-      imageUrl: "/img/services.jpeg/img17.jpeg"
+      imageUrl: "/img/services/img17.jpeg"
     },
     {
       id: 18,
@@ -450,7 +450,7 @@ const ServiceDetailPage: React.FC = () => {
         "Транспортировка",
         "Разгрузка"
       ],
-      imageUrl: "/img/services.jpeg/img18.jpeg"
+      imageUrl: "/img/services/img18.jpeg"
     },
     {
       id: 19,
@@ -470,7 +470,7 @@ const ServiceDetailPage: React.FC = () => {
         "Контроль толщины покрытия",
         "Сдача актов скрытых работ"
       ],
-      imageUrl: "/img/services.jpeg/img19.jpeg"
+      imageUrl: "/img/services/img19.jpeg"
     }
   ];
 
