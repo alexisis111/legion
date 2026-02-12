@@ -25,6 +25,21 @@ const YandexMetrika = () => {
       // Логируем, если функция ym недоступна
       console.log('Yandex Metrika function not available');
     }
+    
+    // Также отправляем hit при первой загрузке компонента
+    if (typeof window !== 'undefined' && window.ym) {
+      // Небольшая задержка для уверенности, что инициализация завершена
+      const timer = setTimeout(() => {
+        window.ym(106789634, 'hit', location.pathname, {
+          title: document.title,
+          referer: document.referrer,
+        });
+        
+        console.log('Yandex Metrika initial hit sent for:', location.pathname);
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
   }, [location]);
 
   return null;
