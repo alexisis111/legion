@@ -50,6 +50,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
               })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106789634', 'ym');
 
               ym(106789634, 'init', {defer: true, ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+              
+              // Логирование инициализации для отладки
+              if (typeof console !== 'undefined') {
+                console.log('Yandex Metrika initialized with ID: 106789634');
+              }
             `
           }}
         />

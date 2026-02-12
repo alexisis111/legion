@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="YaMetrics" />
+    <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="YaMetrics2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,15 +81,7 @@
       <workItem from="1770646586714" duration="3495000" />
       <workItem from="1770657681537" duration="316000" />
       <workItem from="1770825433961" duration="350000" />
-      <workItem from="1770873668838" duration="1395000" />
-    </task>
-    <task id="LOCAL-00002" summary="netlify">
-      <option name="closed" value="true" />
-      <created>1769284775677</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1769284775677</updated>
+      <workItem from="1770873668838" duration="2203000" />
     </task>
     <task id="LOCAL-00003" summary="netlify">
       <option name="closed" value="true" />
@@ -475,7 +467,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770874789987</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="YaMetrics2">
+      <option name="closed" value="true" />
+      <created>1770875262512</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1770875262512</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,6 +501,7 @@
     <MESSAGE value="fixImgs" />
     <MESSAGE value="fixSales" />
     <MESSAGE value="YaMetrics" />
-    <option name="LAST_COMMIT_MESSAGE" value="YaMetrics" />
+    <MESSAGE value="YaMetrics2" />
+    <option name="LAST_COMMIT_MESSAGE" value="YaMetrics2" />
   </component>
 </project>

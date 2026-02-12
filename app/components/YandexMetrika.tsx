@@ -18,6 +18,12 @@ const YandexMetrika = () => {
         title: document.title,
         referer: document.referrer,
       });
+      
+      // Логируем успешный вызов для отладки
+      console.log('Yandex Metrika hit sent for:', location.pathname);
+    } else {
+      // Логируем, если функция ym недоступна
+      console.log('Yandex Metrika function not available');
     }
   }, [location]);
 
