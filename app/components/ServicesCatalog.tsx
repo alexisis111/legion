@@ -194,18 +194,6 @@ const ServicesCatalog: React.FC = () => {
     },
     {
       id: 9,
-      title: "Облицовочные работы",
-      description: "Виды отделочных работ: облицовочные, штукатурные, малярные",
-      category: "Работы по устройству каменных конструкций и отделочные работы",
-      details: [
-        "Облицовка плиткой",
-        "Керамогранит",
-        "Искусственный и натуральный камень"
-      ],
-      imageUrl: "/img/services/img9.jpeg"
-    },
-    {
-      id: 10,
       title: "Устройство каменных конструкций",
       description: "Устройство конструкций из кирпича и строительных блоков",
       category: "Работы по устройству каменных конструкций и отделочные работы",
@@ -217,19 +205,7 @@ const ServicesCatalog: React.FC = () => {
       imageUrl: "/img/services/img10.jpeg"
     },
     {
-      id: 11,
-      title: "Опалубочные и арматурные работы",
-      description: "Устройство и монтаж опалубки и арматурных каркасов",
-      category: "Устройство монолитных и сборных бетонных и железобетонных конструкций",
-      details: [
-        "Изготовление опалубки",
-        "Монтаж арматуры",
-        "Контроль качества"
-      ],
-      imageUrl: "/img/services/img11.jpeg"
-    },
-    {
-      id: 12,
+      id: 10,
       title: "Устройство фундаментов",
       description: "Устройство и ремонт фундаментов зданий, сооружений и оборудования",
       category: "Устройство монолитных и сборных бетонных и железобетонных конструкций",
@@ -241,7 +217,7 @@ const ServicesCatalog: React.FC = () => {
       imageUrl: "/img/services/img12.jpeg"
     },
     {
-      id: 13,
+      id: 11,
       title: "Монтаж сборного железобетона",
       description: "Устройство монолитных бетонных и железобетонных конструкций",
       category: "Устройство монолитных и сборных бетонных и железобетонных конструкций",
@@ -253,7 +229,7 @@ const ServicesCatalog: React.FC = () => {
       imageUrl: "/img/services/img13.jpeg"
     },
     {
-      id: 14,
+      id: 12,
       title: "Теплоизоляция оборудования",
       description: "Теплоизоляционные работы для технологического оборудования",
       category: "Теплоизоляционные работы",
@@ -265,7 +241,7 @@ const ServicesCatalog: React.FC = () => {
       imageUrl: "/img/services/img14.jpeg"
     },
     {
-      id: 15,
+      id: 13,
       title: "Теплоизоляция трубопроводов",
       description: "Теплоизоляция технологических трубопроводов",
       category: "Теплоизоляционные работы",
@@ -277,7 +253,7 @@ const ServicesCatalog: React.FC = () => {
       imageUrl: "/img/services/img15.jpeg"
     },
     {
-      id: 16,
+      id: 14,
       title: "Земляные работы",
       description: "Земляные работы любой сложности",
       category: "Дополнительные услуги",
@@ -289,7 +265,7 @@ const ServicesCatalog: React.FC = () => {
       imageUrl: "/img/services/img16.jpeg"
     },
     {
-      id: 17,
+      id: 15,
       title: "Строительство ангаров",
       description: "Строительство ангаров для различных целей",
       category: "Дополнительные услуги",
@@ -301,7 +277,7 @@ const ServicesCatalog: React.FC = () => {
       imageUrl: "/img/services/img17.jpeg"
     },
     {
-      id: 18,
+      id: 16,
       title: "Грузоперевозки",
       description: "Транспортировка материалов и оборудования",
       category: "Дополнительные услуги",
@@ -313,7 +289,7 @@ const ServicesCatalog: React.FC = () => {
       imageUrl: "/img/services/img18.jpeg"
     },
     {
-      id: 19,
+      id: 17,
       title: "Огнезащита конструкций",
       description: "Огнезащита металлических и деревянных конструкций",
       category: "Дополнительные услуги",
@@ -437,7 +413,7 @@ const ServicesCatalog: React.FC = () => {
                 className="grid grid-cols-2 md:grid-cols-4 gap-4"
               >
                 {[
-                  { value: "19", label: "Услуг" },
+                  { value: "17", label: "Услуг" },
                   { value: "6+", label: "Категорий" },
                   { value: "100%", label: "Качество" },
                   { value: "12+", label: "Лет опыта" },

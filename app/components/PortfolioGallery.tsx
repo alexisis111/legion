@@ -111,7 +111,7 @@ const PortfolioGallery: React.FC = () => {
       location: "Выборгский район",
       year: "2024",
       category: "construction",
-      imageUrl: "/img/portfolio./img9.jpeg"
+      imageUrl: "/img/portfolio/img9.jpeg"
     }
   ];
 

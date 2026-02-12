@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fde30c11-94c5-4884-96a6-cf984ad02720" name="Changes" comment="fixSales">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/PortfolioGallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/PortfolioGallery.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/ServiceDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ServiceDetailPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/ServicesCatalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ServicesCatalog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/root.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +86,8 @@
       <workItem from="1770222618315" duration="890000" />
       <workItem from="1770646586714" duration="3495000" />
       <workItem from="1770657681537" duration="316000" />
+      <workItem from="1770825433961" duration="350000" />
+      <workItem from="1770873668838" duration="977000" />
     </task>
     <task id="LOCAL-00001" summary="netlify">
       <option name="closed" value="true" />
